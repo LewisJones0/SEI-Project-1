@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+}
+
+
+.grid-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snakeman {
+      position:fixed;
+      right:0;
+      bottom:0;
+      margin:0;
+      padding:0;
+      width:75%;
+  }
+
+.grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 750px;
+  width: 750px;
+  background-color: black;
+  color: white;
+}
+
+.grid div {
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 10%;
+  width: 10%;
+}
+
+.grid div.humanSprite {
+  background-image: url('../assets/sprites/Neutral.png'), radial-gradient(rgb(255, 115, 0), rgb(255, 255, 0));
+  background-repeat: no-repeat;
+  background-size: contain;
+}
