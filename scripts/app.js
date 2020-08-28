@@ -9,7 +9,7 @@ function init() {
   const cellCount = width * width
 
   // * game variables
-  let humanPosition = 0
+  let humanPosition = 74
 
 
   function addHuman(position) {
@@ -32,15 +32,16 @@ function init() {
 
   function handleKeyUp(event) {
 
-    removeHuman(humanPosition) // * remove pikachu from the current position
+    removeHuman(humanPosition) // * remove Player from the current position
 
-    const x = humanPosition % width // if pika / width has no remainder then dont move him left or right
-    const y = Math.floor(humanPosition / width) // vertical
+    const x = humanPosition % width // if Player / width has no remainder then dont move him left or right
+    const y = Math.floor(humanPosition / width) // vertical versionb
     
     // Human Position and ArrowKeys/WASD
     switch (event.keyCode) { // * calculate the next position and update it
       case 39: //arrow right
-        if (x < width - 1) humanPosition++
+        if (x < width - 1) 
+        humanPosition++ 
         break
       case 37: //arrow left
         if (x > 0) humanPosition--
@@ -66,14 +67,55 @@ function init() {
       default:
     }
 
-    addHuman(humanPosition) // * add pikachu back at the new position
+    addHuman(humanPosition) // Add the player back into the new position
   }
 
 
   createGrid(humanPosition)
 
+
+// ---------- Draw Map Function -------------
+
+function drawMap(position) {
+  if (biblicLayout.mapLayout === cells)
+  cells[position].classList.add('wall1')
+  console.log(biblicLayout.mapLayout)
+  console.log(cells)
+  return
+}
+
+const biblicLayout = new Object()
+biblicLayout.WALL       = 0;
+biblicLayout.EMPTY      = 1;
+biblicLayout.STRENGTH   = 2;
+biblicLayout.BLOCK      = 3;
+biblicLayout.SWORD      = 4;
+biblicLayout.mapLayout  = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+
+console.log(biblicLayout.mapLayout)
+
+drawMap()
+
+
+
+
+
+
   // ----- Event listeners ------
   document.addEventListener('keyup', handleKeyUp)
+
+  
 }
 
 window.addEventListener('DOMContentLoaded', init)

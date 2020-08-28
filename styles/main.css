@@ -31,8 +31,8 @@ body {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 750px;
-  width: 750px;
+  height: 1000px;
+  width: 1000px;
   background-color: black;
   color: white;
 }
@@ -46,6 +46,12 @@ body {
 
 .grid div.humanSprite {
   background-image: url('../assets/sprites/Neutral.png'), radial-gradient(rgb(255, 115, 0), rgb(255, 255, 0));
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.wall1 { 
+  background-image: url('/assets/sprites/wall1.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
