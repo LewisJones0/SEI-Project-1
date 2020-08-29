@@ -1,16 +1,17 @@
 
 function init() {
-  // * Dom Elements
+  // Dom Elements
   const grid = document.querySelector('.grid')
   const cells = []
-
-  // * grid variables
+  
+  // Grid Variables
   const width = 10
   const cellCount = width * width
 
-  // * game variables
+  // Player starting positon
   let humanPosition = 74
 
+  // Add and Remove Player Functionality
 
   function addHuman(position) {
     cells[position].classList.add('humanSprite')
@@ -19,6 +20,8 @@ function init() {
   function removeHuman(position) {
     cells[position].classList.remove('humanSprite')
   }
+
+  // Create Div Grid
 
   function createGrid(startingPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -29,6 +32,8 @@ function init() {
     }
     addHuman(startingPosition)
   }
+
+// ------- Handle PlayerInput --------
 
   function handleKeyUp(event) {
 
@@ -66,23 +71,11 @@ function init() {
         break
       default:
     }
-
     addHuman(humanPosition) // Add the player back into the new position
   }
-
-
   createGrid(humanPosition)
 
-
 // ---------- Draw Map Function -------------
-
-function drawMap(position) {
-  if (biblicLayout.mapLayout === cells)
-  cells[position].classList.add('wall1')
-  console.log(biblicLayout.mapLayout)
-  console.log(cells)
-  return
-}
 
 const biblicLayout = new Object()
 biblicLayout.WALL       = 0;
@@ -91,7 +84,7 @@ biblicLayout.STRENGTH   = 2;
 biblicLayout.BLOCK      = 3;
 biblicLayout.SWORD      = 4;
 biblicLayout.mapLayout  = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -101,11 +94,58 @@ biblicLayout.mapLayout  = [
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-]
 
-console.log(biblicLayout.mapLayout)
+    function drawMap(cells) {
+      const gridList = document.querySelectorAll('.grid div')
+      for (let i=0; i < gridList.length; i++) {
+      if (biblicLayout.mapLayout[i] === 0) {
+        console.log('working')
+        // cells[position].classList.remove('humanSprite')
+        } else if (biblicLayout.mapLayout[i] === 1){
+          console.log('working2')
+        }
+      }
+    }
 
-drawMap()
+    drawMap()
+
+
+    // Enemy Constructor
+    class Snake {
+      constructor(className, startIndex, speed) {
+        this.className = className //Snake Name/Class
+        this.startIndex = startIndex //Starting Position
+        this.speed = speed //Speed in ms
+        this.currentIndex = startIndex // Current Position
+        this.isScared = false //Player can kill
+        this.timerId = NaN  //Movement
+      }
+    }
+    // All Enemies 
+    const snakes = [
+      new Snake('Lust', 11, 250),
+      new Snake('Greed', 12, 250),
+      new Snake('Shame', 13, 250),
+      new Snake('Envy', 14, 250)
+    ]
+    console.log(snakes)
+
+    // Draw Snakes on map
+    snakes.forEach(snake => {
+      cells[Snake.currentIndex].classList.add(snake.className)
+      cells[Snake.currentIndex].classList.add('snake')
+    })
+    console.log(Snake)
+
+
+
+// const backgroundArray = cells.map(eachDiv => {
+//   console.log(typeof eachDiv)
+//   return (eachDiv)
+// })
+// console.log(backgroundArray)
+
+
 
 
 

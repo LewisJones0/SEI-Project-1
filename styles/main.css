@@ -33,7 +33,7 @@ body {
   justify-content: center;
   height: 1000px;
   width: 1000px;
-  background-color: black;
+  background-color: lightcoral;
   color: white;
 }
 
@@ -50,8 +50,33 @@ body {
   background-size: contain;
 }
 
-.grid div.wall1 { 
+.wall1 { 
   background-image: url('/assets/sprites/wall1.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+.lust {
+  background-image: url('/assets/sprites/RedSnake1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.greed {
+  background-image: url('/assets/sprites/GreenSnake1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.shame {
+  background-image: url('/assets/sprites/BlueSnake1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.envy {
+  background-image: url('/assets/sprites/PurpleSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
