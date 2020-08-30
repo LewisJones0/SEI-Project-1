@@ -11,6 +11,10 @@ function init() {
   // Player starting positon
   let humanPosition = 74
 
+  // Scoreboard
+  const scoreDisplay = document.getElementById('score')
+  let score = 0
+
 
   // ---------- Draw Map Function -------------
 
@@ -21,7 +25,7 @@ function init() {
   biblicLayout.SWORD      = 3
   biblicLayout.mapLayout  = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 1, 1, 1, 1, 1, 1, 3, 0,
     0, 1, 0, 0, 1, 1, 0, 0, 1, 0,
     0, 1, 0, 1, 1, 1, 1, 0, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -110,6 +114,8 @@ function init() {
       default:
     }
     addHuman(humanPosition) // Add the player back into the new position
+    strengthConsumption() // Strength(10pts) Tracker
+    swordConsumption() // Sword(100pts & Fear) Tracker
   }
   createGrid(humanPosition)
 
@@ -131,23 +137,23 @@ function init() {
 
 
   // Enemy Constructor
-  class Snake {
-    constructor(className, startIndex, speed) {
-      this.className = className //Snake Name/Class
-      this.startIndex = startIndex //Starting Position
-      this.speed = speed //Speed in ms
-      this.currentIndex = startIndex // Current Position
-      this.isScared = false //Player can kill
-      this.timerId = NaN  //Movement
-    }
-  }
-  // All Enemies 
-  const snakes = [
-    new Snake('Lust', 11, 250),
-    new Snake('Greed', 12, 250),
-    new Snake('Shame', 13, 250),
-    new Snake('Envy', 14, 250)
-  ]
+  // class Snake {
+  //   constructor(className, startIndex, speed) {
+  //     this.className = className //Snake Name/Class
+  //     this.startIndex = startIndex //Starting Position
+  //     this.speed = speed //Speed in ms
+  //     this.currentIndex = startIndex // Current Position
+  //     this.isScared = false //Player can kill
+  //     this.timerId = NaN  //Movement
+  //   }
+  // }
+  // // All Enemies 
+  // const snakes = [
+  //   new Snake('Lust', 11, 250),
+  //   new Snake('Greed', 12, 250),
+  //   new Snake('Shame', 13, 250),
+  //   new Snake('Envy', 14, 250)
+  // ]
 
   // Draw Snakes on map
   // snakes.forEach(snake => {
@@ -165,8 +171,25 @@ function init() {
   // console.log(backgroundArray)
 
 
+  function strengthConsumption() {
+    console.log(humanPosition)
+    if (cells[humanPosition].classList.contains('wall2')) {
+      score += 10
+      scoreDisplay.innerHTML = score
+      cells[humanPosition].classList.remove('wall2')
+      
+    }
+  }
 
-
+  function swordConsumption() {
+    console.log(humanPosition)
+    if (cells[humanPosition].classList.contains('wall3')) {
+      score += 100
+      scoreDisplay.innerHTML = score
+      cells[humanPosition].classList.remove('wall3')
+      //NEED TO ADD IN FEARING MECHANIC AFTER BOTS IS COMPLETED
+    }
+  }
 
 
 
