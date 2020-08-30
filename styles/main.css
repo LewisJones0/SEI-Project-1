@@ -6,6 +6,10 @@ body {
   height: 100vh;
   margin: 0;
 }
+.ScoreMenu {
+  display: flex;
+  justify-content: center;
+}
 
 
 .grid-wrapper {
@@ -33,7 +37,7 @@ body {
   justify-content: center;
   height: 1000px;
   width: 1000px;
-  background-color: lightcoral;
+  background-color: black;
   color: white;
 }
 

@@ -16,15 +16,14 @@ function init() {
 
   const biblicLayout = new Object()
   biblicLayout.WALL       = 0
-  biblicLayout.EMPTY      = 1
-  biblicLayout.STRENGTH   = 2
-  biblicLayout.BLOCK      = 3
-  biblicLayout.SWORD      = 4
+  biblicLayout.STRENGTH   = 1
+  biblicLayout.EMPTY      = 2
+  biblicLayout.SWORD      = 3
   biblicLayout.mapLayout  = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-    0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+    0, 1, 0, 0, 1, 1, 0, 0, 1, 0,
+    0, 1, 0, 1, 1, 1, 1, 0, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -36,6 +35,8 @@ function init() {
   // Create Div Grid
 
   function createGrid(startingPosition) {
+
+    //Create Grid
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div')
       cell.textContent = i
@@ -46,11 +47,11 @@ function init() {
       if (biblicLayout.mapLayout[i] === 0) {
         cells[i].classList.add('wall1')
       } else if (biblicLayout.mapLayout[i] === 1) {
-        cells[i].classList.add('wall1')
+        cells[i].classList.add('wall2')
       } else if (biblicLayout.mapLayout[i] === 2) {
-        cells[i].classList.add('wall1')
+        cells[i].classList.add('wall3')
       } else if (biblicLayout.mapLayout[i] === 3) {
-        cells[i].classList.add('wall1')
+        cells[i].classList.add('wall4')
       }
     }
     addHuman(startingPosition)
@@ -79,17 +80,20 @@ function init() {
     // Human Position and ArrowKeys/WASD
     switch (event.keyCode) { // * calculate the next position and update it
       case 39: //arrow right
-        if (x < width - 1) 
-          humanPosition++ 
+        if (x < width - 1) humanPosition++
+        // !cells[humanPosition + 1].classList.contains('wall1')
         break
       case 37: //arrow left
         if (x > 0) humanPosition--
+        // !cells[humanPosition + 1].classList.contains('wall1')
         break
       case 38: //arrow up
-        if (y > 0) humanPosition -= width
+        if (y > 0) humanPosition -= width 
+        // !cells[humanPosition + 1].classList.contains('wall1')
         break
       case 40: //arrow down
-        if (y < width - 1) humanPosition += width
+        if (y < width - 1) humanPosition += width 
+        // !cells[humanPosition + 1].classList.contains('wall1')
         break
       case 68: //d right
         if (x < width - 1) humanPosition++
@@ -111,19 +115,19 @@ function init() {
 
 
 
-  function drawMap() {
-    const gridList = document.querySelectorAll('.grid div')
-    for (let i = 0; i < gridList.length; i++) {
-      if (biblicLayout.mapLayout[i] === 0) {
-        console.log('working')
-        // cells[position].classList.remove('humanSprite')
-      } else if (biblicLayout.mapLayout[i] === 1){
-        console.log('working2')
-      }
-    }
-  }
+  // function drawMap() {
+  //   const gridList = document.querySelectorAll('.grid div')
+  //   for (let i = 0; i < gridList.length; i++) {
+  //     if (biblicLayout.mapLayout[i] === 0) {
+  //       console.log('working')
+  //       // cells[position].classList.remove('humanSprite')
+  //     } else if (biblicLayout.mapLayout[i] === 1){
+  //       console.log('working2')
+  //     }
+  //   }
+  // }
 
-  drawMap()
+  // drawMap()
 
 
   // Enemy Constructor
@@ -146,11 +150,11 @@ function init() {
   ]
 
   // Draw Snakes on map
-  snakes.forEach(snake => {
-    cells[Snake.currentIndex].classList.add(snake.className)
-    cells[Snake.currentIndex].classList.add('snake')
-  })
-  console.log(Snake)
+  // snakes.forEach(snake => {
+  //   cells[Snake.currentIndex].classList.add(snake.className)
+  //   cells[Snake.currentIndex].classList.add('snake')
+  // })
+  // console.log(Snake)
 
 
 
