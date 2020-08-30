@@ -50,12 +50,23 @@ body {
   background-size: contain;
 }
 
-.wall1 { 
+.grid div.wall1 { 
   background-image: url('/assets/sprites/wall1.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
+.grid div.wall2 { 
+  background-color: yellow;
+}
+
+.grid div.wall3 { 
+background-color: black;
+}
+
+.grid div.wall4 { 
+background-color: red;
+}
 
 .lust {
   background-image: url('/assets/sprites/RedSnake1.png');
