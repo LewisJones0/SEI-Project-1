@@ -17,6 +17,7 @@ function init() {
 
   //Teleporter Variables
   let teleporterDirection 
+  const teleporterLocationArray = []
   let teleporterLocation
 
 
@@ -112,12 +113,12 @@ function init() {
     cells[position].classList.remove('humanSprite')
   }
 
-  //Find which cells contain the teleporter
+  //Find which cells contain the teleporter - creates an array containing the 2 values
   for (let i = 0; i < biblicLayout.mapLayout.length; i++) {
     teleporterLocation = (biblicLayout.mapLayout[i] === 4)
-    console.log(teleporterLocation)
+    if (teleporterLocation) 
+      teleporterLocationArray.push(i) 
   }
-  
 
 
   // ------- Handle PlayerInput --------
@@ -129,31 +130,121 @@ function init() {
     const x = humanPosition % width // if Player / width has no remainder then dont move him left or right
     const y = Math.floor(humanPosition / width) // vertical version
     
-    // Human Position and ArrowKeys/WASD
-    switch (event.keyCode) { // * calculate the next position and update it
-      case 39: //arrow right
-        // if (cells[humanPosition + 1].classList.contains('wall4')) //then move it to the opposite teleport.
+    // Human Positioning, ArrowKeys/WASD, Teleporter
+    switch (event.keyCode) { // Calculate the next position and update it
+      case 39: //Arrow Right
+        //Check Teleporter Function - Arrow Right
+        if (teleporterLocationArray.indexOf(humanPosition + 1) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
+        // +1 Position, Right Arrow
         if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wall1') && !cells[humanPosition + 1].classList.contains('wall3')) humanPosition++
         break
-      case 37: //arrow left
+      case 37: //Arrow Left
+      // Check Teleporter Function --- Arrow Left
+        if (teleporterLocationArray.indexOf(humanPosition - 1) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
+        // +1 Position, Left Arrow
         if (x > 0 && !cells[humanPosition - 1].classList.contains('wall1')) humanPosition--
         break
-      case 38: //arrow up
+      case 38: //Arrow Up
+        // Check Teleporter Function --- Arrow Up
+        if (teleporterLocationArray.indexOf(humanPosition - 10) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
+        //Arrow Up +1 Space
         if (y > 0 && !cells[humanPosition - 10].classList.contains('wall1')) humanPosition -= width 
         break
-      case 40: //arrow down
+      case 40: //Arrow Down
+      //Check Teleporter Function --- Arrow Down
+        if (teleporterLocationArray.indexOf(humanPosition + 10) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
         if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wall1')) humanPosition += width 
         break
-      case 68: //d right
+      case 68: //D Key Right
+      // Check Teleporter Function --- D Key Right
+        if (teleporterLocationArray.indexOf(humanPosition + 1) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
         if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wall1')) humanPosition++
         break
-      case 65: //a left
+      case 65: //A Key Left
+      // Check Teleporter Function --- A Key Left
+        if (teleporterLocationArray.indexOf(humanPosition - 1) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
         if (x > 0 && !cells[humanPosition - 1].classList.contains('wall1')) humanPosition--
         break
-      case 87: //w up
+      case 87: //W Key Up
+      // Check Teleporter Function --- W Key Up
+        if (teleporterLocationArray.indexOf(humanPosition - 10) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
         if (y > 0 && !cells[humanPosition - 10].classList.contains('wall1')) humanPosition -= width
         break
-      case 83: //s down
+      case 83: //S Key Down
+      // Check Teleporter Function --- S Key Down
+        if (teleporterLocationArray.indexOf(humanPosition + 10) >= 0) {
+          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          let newIndex
+
+          if (index === 0) newIndex = 1
+          else newIndex = 0
+
+          humanPosition = teleporterLocationArray[newIndex]
+          console.log(humanPosition)
+        }
         if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wall1')) humanPosition += width
         break
       default:
