@@ -15,7 +15,9 @@ function init() {
   const scoreDisplay = document.getElementById('score')
   let score = -10
 
+  //Teleporter Variables
   let teleporterDirection 
+  let teleporterLocation
 
 
   // ---------- Draw Map Function -------------
@@ -58,11 +60,14 @@ function init() {
     if (teleporterDirection === 'left-right') {
       // Generates a random number between 10 and 80
       const leftWallNum = (Math.floor(Math.random() * 8) + 1) * 10
+      // Generates a random number between 19 and 89
       const rightWallNum = (Math.floor(Math.random() * 8) + 1) * 10 + 9
       biblicLayout.mapLayout[leftWallNum] = 4
       biblicLayout.mapLayout[rightWallNum] = 4
     } else {
+      // Generates a random number between 1 and 8
       const topWallNum = (Math.floor(Math.random() * 8) + 1)
+      // Generates a random number between 91 and 98
       const bottomWallNum = (Math.floor(Math.random() * 8) + 1) + 90
       biblicLayout.mapLayout[topWallNum] = 4
       biblicLayout.mapLayout[bottomWallNum] = 4
@@ -70,8 +75,8 @@ function init() {
   }
 
   drawTeleporter()
-  // Create Div Grid
 
+  // Create Div Grid
   function createGrid(startingPosition) {
 
     //Create Grid
@@ -107,6 +112,12 @@ function init() {
     cells[position].classList.remove('humanSprite')
   }
 
+  //Find which cells contain the teleporter
+  for (let i = 0; i < biblicLayout.mapLayout.length; i++) {
+    teleporterLocation = (biblicLayout.mapLayout[i] === 4)
+    console.log(teleporterLocation)
+  }
+  
 
 
   // ------- Handle PlayerInput --------
@@ -121,7 +132,7 @@ function init() {
     // Human Position and ArrowKeys/WASD
     switch (event.keyCode) { // * calculate the next position and update it
       case 39: //arrow right
-        // if (check if player would step on wall 4) then move it to the opposite teleport.
+        // if (cells[humanPosition + 1].classList.contains('wall4')) //then move it to the opposite teleport.
         if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wall1') && !cells[humanPosition + 1].classList.contains('wall3')) humanPosition++
         break
       case 37: //arrow left
