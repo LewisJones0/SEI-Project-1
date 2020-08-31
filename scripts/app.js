@@ -23,12 +23,7 @@ function init() {
 
   // ---------- Draw Map Function -------------
 
-  const biblicLayout = new Object()
-  biblicLayout.WALL       = 0
-  biblicLayout.STRENGTH   = 1
-  biblicLayout.EMPTY      = 2
-  biblicLayout.SWORD      = 3
-  biblicLayout.mapLayout  = [
+  const mapLayout  = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 3, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
@@ -40,16 +35,16 @@ function init() {
     0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-  // RNG wall1 blocks inside the grid
-  for (let i = 0; i < biblicLayout.mapLayout.length; i++) {
-    if (biblicLayout.mapLayout[i] === 1) {
+  // RNG wallTile blocks inside the grid
+  for (let i = 0; i < mapLayout.length; i++) {
+    if (mapLayout[i] === 1) {
       if (Math.random() < 0.4
-      && biblicLayout.mapLayout[i - 1] === 1
-      && biblicLayout.mapLayout[i + 1]  === 1
-      && biblicLayout.mapLayout[i - 10]  === 1
-      && biblicLayout.mapLayout[i + 10]  === 1
-      && biblicLayout.mapLayout[i - 11]  === 1
-      && i !== 74) biblicLayout.mapLayout[i] = 0
+      && mapLayout[i - 1] === 1
+      && mapLayout[i + 1]  === 1
+      && mapLayout[i - 10]  === 1
+      && mapLayout[i + 10]  === 1
+      && mapLayout[i - 11]  === 1
+      && i !== 74) mapLayout[i] = 0
     }
   }
 
@@ -63,15 +58,15 @@ function init() {
       const leftWallNum = (Math.floor(Math.random() * 8) + 1) * 10
       // Generates a random number between 19 and 89
       const rightWallNum = (Math.floor(Math.random() * 8) + 1) * 10 + 9
-      biblicLayout.mapLayout[leftWallNum] = 4
-      biblicLayout.mapLayout[rightWallNum] = 4
+      mapLayout[leftWallNum] = 4
+      mapLayout[rightWallNum] = 4
     } else {
       // Generates a random number between 1 and 8
       const topWallNum = (Math.floor(Math.random() * 8) + 1)
       // Generates a random number between 91 and 98
       const bottomWallNum = (Math.floor(Math.random() * 8) + 1) + 90
-      biblicLayout.mapLayout[topWallNum] = 4
-      biblicLayout.mapLayout[bottomWallNum] = 4
+      mapLayout[topWallNum] = 4
+      mapLayout[bottomWallNum] = 4
     }
   }
 
@@ -88,16 +83,16 @@ function init() {
       cells.push(cell)
 
       //Add MapLayout
-      if (biblicLayout.mapLayout[i] === 0) {
-        cells[i].classList.add('wall1')
-      } else if (biblicLayout.mapLayout[i] === 1) {
-        cells[i].classList.add('wall2')
-      } else if (biblicLayout.mapLayout[i] === 2) {
-        cells[i].classList.add('wall3')
-      } else if (biblicLayout.mapLayout[i] === 3) {
-        cells[i].classList.add('wall4')
-      } else if (biblicLayout.mapLayout[i] === 4) {
-        cells[i].classList.add('wall3')
+      if (mapLayout[i] === 0) {
+        cells[i].classList.add('wallTile')
+      } else if (mapLayout[i] === 1) {
+        cells[i].classList.add('strengthTile')
+      } else if (mapLayout[i] === 2) {
+        cells[i].classList.add('unusedPlaceholder')
+      } else if (mapLayout[i] === 3) {
+        cells[i].classList.add('swordTile')
+      } else if (mapLayout[i] === 4) {
+        cells[i].classList.add('stairs_east')
       }
     }
     addHuman(startingPosition)
@@ -114,8 +109,8 @@ function init() {
   }
 
   //Find which cells contain the teleporter - creates an array containing the 2 values
-  for (let i = 0; i < biblicLayout.mapLayout.length; i++) {
-    teleporterLocation = (biblicLayout.mapLayout[i] === 4)
+  for (let i = 0; i < mapLayout.length; i++) {
+    teleporterLocation = (mapLayout[i] === 4)
     if (teleporterLocation) 
       teleporterLocationArray.push(i) 
   }
@@ -142,10 +137,9 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
         // +1 Position, Right Arrow
-        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wall1') && !cells[humanPosition + 1].classList.contains('wall3')) humanPosition++
+        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wallTile') && !cells[humanPosition + 1].classList.contains('wall3')) humanPosition++
         break
       case 37: //Arrow Left
       // Check Teleporter Function --- Arrow Left
@@ -157,10 +151,9 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
         // +1 Position, Left Arrow
-        if (x > 0 && !cells[humanPosition - 1].classList.contains('wall1')) humanPosition--
+        if (x > 0 && !cells[humanPosition - 1].classList.contains('wallTile')) humanPosition--
         break
       case 38: //Arrow Up
         // Check Teleporter Function --- Arrow Up
@@ -172,10 +165,9 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
         //Arrow Up +1 Space
-        if (y > 0 && !cells[humanPosition - 10].classList.contains('wall1')) humanPosition -= width 
+        if (y > 0 && !cells[humanPosition - 10].classList.contains('wallTile')) humanPosition -= width 
         break
       case 40: //Arrow Down
       //Check Teleporter Function --- Arrow Down
@@ -187,9 +179,8 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
-        if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wall1')) humanPosition += width 
+        if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wallTile')) humanPosition += width 
         break
       case 68: //D Key Right
       // Check Teleporter Function --- D Key Right
@@ -201,9 +192,8 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
-        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wall1')) humanPosition++
+        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wallTile')) humanPosition++
         break
       case 65: //A Key Left
       // Check Teleporter Function --- A Key Left
@@ -215,9 +205,8 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
-        if (x > 0 && !cells[humanPosition - 1].classList.contains('wall1')) humanPosition--
+        if (x > 0 && !cells[humanPosition - 1].classList.contains('wallTile')) humanPosition--
         break
       case 87: //W Key Up
       // Check Teleporter Function --- W Key Up
@@ -229,9 +218,8 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
-        if (y > 0 && !cells[humanPosition - 10].classList.contains('wall1')) humanPosition -= width
+        if (y > 0 && !cells[humanPosition - 10].classList.contains('wallTile')) humanPosition -= width
         break
       case 83: //S Key Down
       // Check Teleporter Function --- S Key Down
@@ -243,9 +231,8 @@ function init() {
           else newIndex = 0
 
           humanPosition = teleporterLocationArray[newIndex]
-          console.log(humanPosition)
         }
-        if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wall1')) humanPosition += width
+        if (y < width - 1 && !cells[humanPosition + 10].classList.contains('wallTile')) humanPosition += width
         break
       default:
     }
@@ -261,10 +248,10 @@ function init() {
   // function drawMap() {
   //   const gridList = document.querySelectorAll('.grid div')
   //   for (let i = 0; i < gridList.length; i++) {
-  //     if (biblicLayout.mapLayout[i] === 0) {
+  //     if (mapLayout[i] === 0) {
   //       console.log('working')
   //       // cells[position].classList.remove('humanSprite')
-  //     } else if (biblicLayout.mapLayout[i] === 1){
+  //     } else if (mapLayout[i] === 1){
   //       console.log('working2')
   //     }
   //   }
@@ -309,19 +296,19 @@ function init() {
 
 
   function strengthConsumption() {
-    if (cells[humanPosition].classList.contains('wall2')) {
+    if (cells[humanPosition].classList.contains('strengthTile')) {
       score += 10
       scoreDisplay.innerHTML = score
-      cells[humanPosition].classList.remove('wall2')
+      cells[humanPosition].classList.remove('strengthTile')
       
     }
   }
 
   function swordConsumption() {
-    if (cells[humanPosition].classList.contains('wall4')) {
+    if (cells[humanPosition].classList.contains('swordTile')) {
       score += 100
       scoreDisplay.innerHTML = score
-      cells[humanPosition].classList.remove('wall4')
+      cells[humanPosition].classList.remove('swordTile')
       //NEED TO ADD IN FEARING MECHANIC AFTER BOTS IS COMPLETED
     }
   }

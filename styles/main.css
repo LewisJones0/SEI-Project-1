@@ -54,25 +54,31 @@ body {
   background-size: contain;
 }
 
-.grid div.wall1 { 
+.grid div.wallTile { 
   background-image: url('/assets/sprites/wall1.jpg');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.wall2 { 
+.grid div.strengthTile { 
   background-color: yellow;
 }
 
-.grid div.wall3 { 
-background-color: black;
+.grid div.unusedPlaceholder { 
+background-color: pink;
 }
 
-.grid div.wall4 { 
+.grid div.swordTile { 
 background-color: red;
 }
 
-.lust {
+.grid div.stairs_east { 
+  background-image: url('/assets/sprites/Stairs_East.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+/* .lust {
   background-image: url('/assets/sprites/RedSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -94,4 +100,4 @@ background-color: red;
   background-image: url('/assets/sprites/PurpleSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
