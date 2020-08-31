@@ -9,20 +9,27 @@ function init() {
   const cellCount = width * width
 
   // Player starting positon
-  let humanPosition = 74
+  let humanPosition = 11
+  let snakePosition = 88
 
   // Scoreboard
   const scoreDisplay = document.getElementById('score')
-  let score = -10
+  let score = 0
 
   //Teleporter Variables
   let teleporterDirection 
   const teleporterLocationArray = []
   let teleporterLocation
 
+  //------------------------------------------------------------------------------------------------------
 
-  // ---------- Draw Map Function -------------
+  // Map Layout
 
+  // 0 = Wall
+  // 1 = Strength
+  // 2 = Placeholder
+  // 3 = Sword
+  // 4 = Stairs/Teleporter
   const mapLayout  = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 3, 0,
@@ -44,14 +51,15 @@ function init() {
       && mapLayout[i - 10]  === 1
       && mapLayout[i + 10]  === 1
       && mapLayout[i - 11]  === 1
-      && i !== 74) mapLayout[i] = 0
+      && i !== 11) mapLayout[i] = 0
     }
   }
 
-  // Random top-bottom or left-right teleport spawn.
+  // Randomise whether the top-bottom or left-right teleporter spawn.
   if (Math.random() < 0.5) teleporterDirection = 'top-down'
   else teleporterDirection = 'left-right'
 
+  //Changes the number in the mapLayout array to 4 in a randomised fashion, utilsiing the 'top-down' || 'left-right' function
   function drawTeleporter() {
     if (teleporterDirection === 'left-right') {
       // Generates a random number between 10 and 80
@@ -69,7 +77,6 @@ function init() {
       mapLayout[bottomWallNum] = 4
     }
   }
-
   drawTeleporter()
 
   // Create Div Grid
@@ -82,7 +89,7 @@ function init() {
       grid.appendChild(cell)
       cells.push(cell)
 
-      //Add MapLayout
+      //Add MapLayout -- links the number on the mapLayout array with the CSS elements
       if (mapLayout[i] === 0) {
         cells[i].classList.add('wallTile')
       } else if (mapLayout[i] === 1) {
@@ -98,17 +105,15 @@ function init() {
     addHuman(startingPosition)
   }
 
-  // Add and Remove Player Functionality
-
+  // Add and Remove Player Function
   function addHuman(position) {
     cells[position].classList.add('humanSprite')
   }
-  
   function removeHuman(position) {
     cells[position].classList.remove('humanSprite')
   }
 
-  //Find which cells contain the teleporter - creates an array containing the 2 values
+  //Find which cells in mapLayout contain the teleporter - creates an array containing the 2 values
   for (let i = 0; i < mapLayout.length; i++) {
     teleporterLocation = (mapLayout[i] === 4)
     if (teleporterLocation) 
@@ -116,8 +121,7 @@ function init() {
   }
 
 
-  // ------- Handle PlayerInput --------
-
+  // Handle PlayerInput -------------------------------------------------------------------------------------
   function handleKeyUp(event) {
 
     removeHuman(humanPosition) // * remove Player from the current position
@@ -139,7 +143,7 @@ function init() {
           humanPosition = teleporterLocationArray[newIndex]
         }
         // +1 Position, Right Arrow
-        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wallTile') && !cells[humanPosition + 1].classList.contains('wall3')) humanPosition++
+        if (x < width - 1 && !cells[humanPosition + 1].classList.contains('wallTile')) humanPosition++
         break
       case 37: //Arrow Left
       // Check Teleporter Function --- Arrow Left
@@ -241,58 +245,33 @@ function init() {
     swordConsumption() // Sword(100pts & Fear) Tracker
   }
   createGrid(humanPosition)
-  
 
 
-
-  // function drawMap() {
-  //   const gridList = document.querySelectorAll('.grid div')
-  //   for (let i = 0; i < gridList.length; i++) {
-  //     if (mapLayout[i] === 0) {
-  //       console.log('working')
-  //       // cells[position].classList.remove('humanSprite')
-  //     } else if (mapLayout[i] === 1){
-  //       console.log('working2')
-  //     }
-  //   }
-  // }
-
-  // drawMap()
-
+  // Enemy Creation/AI ------------------------------------------------------------------------
 
   // Enemy Constructor
-  // class Snake {
-  //   constructor(className, startIndex, speed) {
-  //     this.className = className //Snake Name/Class
-  //     this.startIndex = startIndex //Starting Position
-  //     this.speed = speed //Speed in ms
-  //     this.currentIndex = startIndex // Current Position
-  //     this.isScared = false //Player can kill
-  //     this.timerId = NaN  //Movement
-  //   }
-  // }
-  // // All Enemies 
-  // const snakes = [
-  //   new Snake('Lust', 11, 250),
-  //   new Snake('Greed', 12, 250),
-  //   new Snake('Shame', 13, 250),
-  //   new Snake('Envy', 14, 250)
-  // ]
-
-  // Draw Snakes on map
-  // snakes.forEach(snake => {
-  //   cells[Snake.currentIndex].classList.add(snake.className)
-  //   cells[Snake.currentIndex].classList.add('snake')
-  // })
-  // console.log(Snake)
+  class Snake {
+    constructor(className, startIndex, speed) {
+      this.className = className //Snake Name/Class
+      this.startIndex = startIndex //Starting Position
+      this.speed = speed //Speed in ms
+      this.currentIndex = startIndex // Current Position
+      this.isScared = false //Player can kill
+      this.timerId = NaN  //Movement
+    }
+  }
+  // All Enemies 
+  const snakes = [
+    new Snake('Greed', 88, 250)
+  ]
+  
+  snakes.forEach(snake => {
+    cells[snake.currentIndex].classlist.add(snake.className)
+    cells[snake.currentIndex].classlist.add('snake')
+  })
 
 
 
-  // const backgroundArray = cells.map(eachDiv => {
-  //   console.log(typeof eachDiv)
-  //   return (eachDiv)
-  // })
-  // console.log(backgroundArray)
 
 
   function strengthConsumption() {

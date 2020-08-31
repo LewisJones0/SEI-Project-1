@@ -42,7 +42,7 @@ body {
 }
 
 .grid div {
-  border: 1px solid lightgrey;
+  border: 1px solid darkgray;
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -78,26 +78,8 @@ background-color: red;
   background-size: contain;
 }
 
-/* .lust {
-  background-image: url('/assets/sprites/RedSnake1.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.greed {
+.grid div.snake {
   background-image: url('/assets/sprites/GreenSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
-
-.shame {
-  background-image: url('/assets/sprites/BlueSnake1.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.envy {
-  background-image: url('/assets/sprites/PurpleSnake1.png');
-  background-repeat: no-repeat;
-  background-size: contain;
-} */
