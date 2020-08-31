@@ -64,7 +64,7 @@ body {
   background-color: yellow;
 }
 
-.grid div.unusedPlaceholder { 
+.grid div.emptyTile { 
 background-color: pink;
 }
 
@@ -78,8 +78,15 @@ background-color: red;
   background-size: contain;
 }
 
-.grid div.snake {
+.grid div.greensnake {
   background-image: url('/assets/sprites/GreenSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
+  z-index: 999;
+}
+.grid div.redsnake {
+  background-image: url('/assets/sprites/RedSnake1.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
 }

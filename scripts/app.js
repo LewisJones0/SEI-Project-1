@@ -9,8 +9,7 @@ function init() {
   const cellCount = width * width
 
   // Player starting positon
-  let humanPosition = 11
-  let snakePosition = 88
+  const humanStartPosition = 11
 
   // Scoreboard
   const scoreDisplay = document.getElementById('score')
@@ -22,7 +21,9 @@ function init() {
   let teleporterLocation
 
   //------------------------------------------------------------------------------------------------------
-
+  let humanPosition = humanStartPosition
+  scoreDisplay.innerHTML = 0
+  
   // Map Layout
 
   // 0 = Wall
@@ -51,8 +52,12 @@ function init() {
       && mapLayout[i - 10]  === 1
       && mapLayout[i + 10]  === 1
       && mapLayout[i - 11]  === 1
-      && i !== 11) mapLayout[i] = 0
+      && i !== humanStartPosition) mapLayout[i] = 0
     }
+    if (i === humanStartPosition) {
+      mapLayout[i] = 2
+    }
+
   }
 
   // Randomise whether the top-bottom or left-right teleporter spawn.
@@ -95,23 +100,24 @@ function init() {
       } else if (mapLayout[i] === 1) {
         cells[i].classList.add('strengthTile')
       } else if (mapLayout[i] === 2) {
-        cells[i].classList.add('unusedPlaceholder')
+        cells[i].classList.add('emptyTile')
       } else if (mapLayout[i] === 3) {
         cells[i].classList.add('swordTile')
       } else if (mapLayout[i] === 4) {
         cells[i].classList.add('stairs_east')
       }
     }
-    addHuman(startingPosition)
+    addCharacter(startingPosition,'humanSprite')
   }
 
   // Add and Remove Player Function
-  function addHuman(position) {
-    cells[position].classList.add('humanSprite')
+  function addCharacter(position, className) {
+    cells[position].classList.add(className)
   }
-  function removeHuman(position) {
-    cells[position].classList.remove('humanSprite')
+  function removeCharacter(position, className) {
+    cells[position].classList.remove(className)
   }
+
 
   //Find which cells in mapLayout contain the teleporter - creates an array containing the 2 values
   for (let i = 0; i < mapLayout.length; i++) {
@@ -124,7 +130,7 @@ function init() {
   // Handle PlayerInput -------------------------------------------------------------------------------------
   function handleKeyUp(event) {
 
-    removeHuman(humanPosition) // * remove Player from the current position
+    removeCharacter(humanPosition, 'humanSprite') // * remove Player from the current position
 
     const x = humanPosition % width // if Player / width has no remainder then dont move him left or right
     const y = Math.floor(humanPosition / width) // vertical version
@@ -148,7 +154,7 @@ function init() {
       case 37: //Arrow Left
       // Check Teleporter Function --- Arrow Left
         if (teleporterLocationArray.indexOf(humanPosition - 1) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition - 1)
           let newIndex
 
           if (index === 0) newIndex = 1
@@ -162,7 +168,7 @@ function init() {
       case 38: //Arrow Up
         // Check Teleporter Function --- Arrow Up
         if (teleporterLocationArray.indexOf(humanPosition - 10) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition - 10)
           let newIndex
 
           if (index === 0) newIndex = 1
@@ -176,7 +182,7 @@ function init() {
       case 40: //Arrow Down
       //Check Teleporter Function --- Arrow Down
         if (teleporterLocationArray.indexOf(humanPosition + 10) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition + 10)
           let newIndex
 
           if (index === 0) newIndex = 1
@@ -202,7 +208,7 @@ function init() {
       case 65: //A Key Left
       // Check Teleporter Function --- A Key Left
         if (teleporterLocationArray.indexOf(humanPosition - 1) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition - 1)
           let newIndex
 
           if (index === 0) newIndex = 1
@@ -215,8 +221,9 @@ function init() {
       case 87: //W Key Up
       // Check Teleporter Function --- W Key Up
         if (teleporterLocationArray.indexOf(humanPosition - 10) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition - 10)
           let newIndex
+
 
           if (index === 0) newIndex = 1
           else newIndex = 0
@@ -225,12 +232,11 @@ function init() {
         }
         if (y > 0 && !cells[humanPosition - 10].classList.contains('wallTile')) humanPosition -= width
         break
-      case 83: //S Key Down
+      case 83: //S Key Downddd
       // Check Teleporter Function --- S Key Down
         if (teleporterLocationArray.indexOf(humanPosition + 10) >= 0) {
-          const index = teleporterLocationArray.indexOf(humanPosition + 1)
+          const index = teleporterLocationArray.indexOf(humanPosition + 10)
           let newIndex
-
           if (index === 0) newIndex = 1
           else newIndex = 0
 
@@ -240,9 +246,11 @@ function init() {
         break
       default:
     }
-    addHuman(humanPosition) // Add the player back into the new position
+    addCharacter(humanPosition, 'humanSprite') // Add the player back into the new position
     strengthConsumption() // Strength(10pts) Tracker
     swordConsumption() // Sword(100pts & Fear) Tracker
+    checkWin() //Checks for win
+    checkLose()
   }
   createGrid(humanPosition)
 
@@ -250,25 +258,51 @@ function init() {
   // Enemy Creation/AI ------------------------------------------------------------------------
 
   // Enemy Constructor
-  class Snake {
+  class snakeAddition {
     constructor(className, startIndex, speed) {
       this.className = className //Snake Name/Class
       this.startIndex = startIndex //Starting Position
       this.speed = speed //Speed in ms
       this.currentIndex = startIndex // Current Position
       this.isScared = false //Player can kill
-      this.timerId = NaN  //Movement
     }
   }
-  // All Enemies 
+  // List of Snakes (created Constructor to add additional later)
   const snakes = [
-    new Snake('Greed', 88, 250)
+    new snakeAddition('green', 88, 500),
+    new snakeAddition('red', 51, 350)
   ]
   
-  snakes.forEach(snake => {
-    cells[snake.currentIndex].classlist.add(snake.className)
-    cells[snake.currentIndex].classlist.add('snake')
+  // Spawn Snake On Map
+  snakes.forEach((snakeAddition, index) => {
+    cells[snakeAddition.currentIndex].classList.add(snakeAddition.className + 'snake')
+    cells[snakeAddition.currentIndex].classList.add('snake')
+    //Move snake interval based on its .speed
+    setInterval(function()  {
+      moveSnake(index)
+    }, snakeAddition.speed)
   })
+  
+  //Snake Movement
+  function moveSnake(index) {
+    const nextMovementArray = []
+    const currentIndex = snakes[index].currentIndex
+
+    if (!cells[currentIndex - 10].classList.contains('wallTile') && !cells[currentIndex - 10].classList.contains('stairs_east') && !cells[currentIndex - 10].classList.contains('snake')) nextMovementArray.push(-10)
+    if (!cells[currentIndex + 1].classList.contains('wallTile') && !cells[currentIndex + 1].classList.contains('stairs_east') && !cells[currentIndex + 1].classList.contains('snake')) nextMovementArray.push(1)
+    if (!cells[currentIndex + 10].classList.contains('wallTile') && !cells[currentIndex + 10].classList.contains('stairs_east') && !cells[currentIndex + 10].classList.contains('snake')) nextMovementArray.push(10)
+    if (!cells[currentIndex - 1].classList.contains('wallTile') && !cells[currentIndex - 1].classList.contains('stairs_east') && !cells[currentIndex - 1].classList.contains('snake')) nextMovementArray.push(-1)
+  
+    const selectedPosition = Math.floor(Math.random() * nextMovementArray.length)
+
+    removeCharacter(currentIndex, snakes[index].className + 'snake')
+
+    addCharacter(currentIndex + nextMovementArray[selectedPosition], snakes[index].className + 'snake')
+
+    snakes[index].currentIndex = currentIndex + nextMovementArray[selectedPosition]
+
+    checkLose()
+  }
 
 
 
@@ -279,7 +313,6 @@ function init() {
       score += 10
       scoreDisplay.innerHTML = score
       cells[humanPosition].classList.remove('strengthTile')
-      
     }
   }
 
@@ -292,13 +325,25 @@ function init() {
     }
   }
 
+  function checkWin() {
+    let count = 0
+  
+    cells.forEach(cell => {
+      if (cell.classList.contains('strengthTile')) count++
+    })
+    console.log(count)
+    if (count === 0) alert('WIN')
+  }
 
+  function checkLose() { 
+    if (!cells.classList.contains('snake') && !cells.classList.contains('humanSprite')) alert('LOSE')
+  }
 
 
   // ----- Event listeners ------
   document.addEventListener('keyup', handleKeyUp)
-
-  
 }
 
 window.addEventListener('DOMContentLoaded', init)
+
+'strengthTile'
