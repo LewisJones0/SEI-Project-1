@@ -325,18 +325,24 @@ function init() {
     }
   }
 
+  // Checks everytime the player takes a step whether all of the strength has been cleared across the board
   function checkWin() {
     let count = 0
   
     cells.forEach(cell => {
       if (cell.classList.contains('strengthTile')) count++
     })
-    console.log(count)
     if (count === 0) alert('WIN')
   }
 
+  // Checks everytime the player takes a step on one of the snakes or visa versa
   function checkLose() { 
-    if (!cells.classList.contains('snake') && !cells.classList.contains('humanSprite')) alert('LOSE')
+    let count = 0
+
+    cells.forEach(cell => {
+      if (cell.classList.contains('snake') && cell.classList.contains('humanSprite')) count++
+    })
+    // if (count === 1) alert('LOSE')
   }
 
 

@@ -84,6 +84,7 @@ background-color: red;
   background-size: contain;
   z-index: 999;
 }
+
 .grid div.redsnake {
   background-image: url('/assets/sprites/RedSnake1.png');
   background-repeat: no-repeat;
