@@ -48,6 +48,7 @@ function init() {
 
     // RNG wallTile blocks inside the grid
     for (let i = 0; i < mapLayout.length; i++) {
+      //Selects all of the 1's in the array
       if (mapLayout[i] === 1) {
         if (Math.random() < 0.4
         && mapLayout[i - 1] === 1
@@ -55,8 +56,10 @@ function init() {
         && mapLayout[i - 10]  === 1
         && mapLayout[i + 10]  === 1
         && mapLayout[i - 11]  === 1
+        //Exclude the player start positon from the calculation, if all conditions are met, place a 0 in the array
         && i !== humanStartPosition) mapLayout[i] = 0
       }
+      //Put a empty tile where the player spawns
       if (i === humanStartPosition) {
         mapLayout[i] = 2
       }
@@ -113,14 +116,13 @@ function init() {
       addCharacter(startingPosition,'humanSprite')
     }
 
-    // Add and Remove Player Function
+    // Add and Remove Sprites, Player AND Snakes
     function addCharacter(position, className) {
       cells[position].classList.add(className)
     }
     function removeCharacter(position, className) {
       cells[position].classList.remove(className)
     }
-
 
     //Find which cells in mapLayout contain the teleporter - creates an array containing the 2 values
     for (let i = 0; i < mapLayout.length; i++) {
@@ -129,14 +131,13 @@ function init() {
         teleporterLocationArray.push(i) 
     }
 
-
     // Handle PlayerInput -------------------------------------------------------------------------------------
     function handleKeyUp(event) {
 
-      removeCharacter(humanPosition, 'humanSprite') // * remove Player from the current position
+      removeCharacter(humanPosition, 'humanSprite') // Remove Player from the current position
 
-      const x = humanPosition % width // if Player / width has no remainder then dont move him left or right
-      const y = Math.floor(humanPosition / width) // vertical version
+      const x = humanPosition % width // If Player / width has no remainder then dont move him left or right
+      const y = Math.floor(humanPosition / width) // Vertical version
       
       // Human Positioning, ArrowKeys/WASD, Teleporter
       switch (event.keyCode) { // Calculate the next position and update it
@@ -252,8 +253,8 @@ function init() {
       addCharacter(humanPosition, 'humanSprite') // Add the player back into the new position
       strengthConsumption() // Strength(10pts) Tracker
       swordConsumption() // Sword(100pts & Fear) Tracker
-      checkWin() //Checks for win
-      checkLose()
+      checkWin() //Checks for win everytime the player moves (consume all strength)
+      checkLose() //Checks for lose everytime the player moves (you step on snake)
     }
     createGrid(humanPosition)
 
@@ -270,7 +271,7 @@ function init() {
         this.isScared = false //Player can kill
       }
     }
-    // List of Snakes (created Constructor to add additional later)
+    // List of Snakes (created Constructor to beable add additional later)
     const snakes = [
       new snakeAddition('green', 88, 500),
       new snakeAddition('red', 51, 350)
@@ -291,6 +292,7 @@ function init() {
       const nextMovementArray = []
       const currentIndex = snakes[index].currentIndex
 
+      //Snake on Snake IF statement isnt working, this might be due to how the interger is calculating with eachother 
       if (!cells[currentIndex - 10].classList.contains('wallTile') && !cells[currentIndex - 10].classList.contains('stairs_east') && !cells[currentIndex - 10].classList.contains('snake')) nextMovementArray.push(-10)
       if (!cells[currentIndex + 1].classList.contains('wallTile') && !cells[currentIndex + 1].classList.contains('stairs_east') && !cells[currentIndex + 1].classList.contains('snake')) nextMovementArray.push(1)
       if (!cells[currentIndex + 10].classList.contains('wallTile') && !cells[currentIndex + 10].classList.contains('stairs_east') && !cells[currentIndex + 10].classList.contains('snake')) nextMovementArray.push(10)
@@ -304,7 +306,7 @@ function init() {
 
       snakes[index].currentIndex = currentIndex + nextMovementArray[selectedPosition]
 
-      checkLose()
+      checkLose() // Checks for lose every step a snake makes (snake steps on human)
     }
 
 
@@ -356,11 +358,10 @@ function init() {
   // Main Menu  ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
   newGame()
   
-  mainMenu
+  function mainMenu()
+  const buttons = document.createElement('div')
 
 
 }
-
+mainMenu()
 window.addEventListener('DOMContentLoaded', init)
-
-'strengthTile'
