@@ -5,7 +5,23 @@
 body {
   height: 100vh;
   margin: 0;
+  background-color: dimgray;
 }
+
+.mainMenu {
+  position: fixed;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  height: 1100px;
+  width: 1250px;
+  border:darkslategray solid 20px;
+  background-color: darkred;
+  z-index: 999;
+}
+
 .ScoreMenu {
   display: flex;
   justify-content: center;
@@ -20,12 +36,12 @@ body {
 }
 
 .snakeman {
-      position:fixed;
-      right:0;
-      bottom:0;
+      position: relative;;
+      right:-15%;
+      bottom:-36%;
       margin:0;
       padding:0;
-      width:75%;
+      width:85%;
   }
 
 .grid {
@@ -82,12 +98,10 @@ background-color: red;
   background-image: url('/assets/sprites/GreenSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 999;
 }
 
 .grid div.redsnake {
   background-image: url('/assets/sprites/RedSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
-  z-index: 999;
 }
