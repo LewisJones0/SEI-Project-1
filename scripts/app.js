@@ -298,6 +298,7 @@ function init() {
       if (!cells[currentIndex + 10].classList.contains('wallTile') && !cells[currentIndex + 10].classList.contains('stairs_east') && !cells[currentIndex + 10].classList.contains('snake')) nextMovementArray.push(10)
       if (!cells[currentIndex - 1].classList.contains('wallTile') && !cells[currentIndex - 1].classList.contains('stairs_east') && !cells[currentIndex - 1].classList.contains('snake')) nextMovementArray.push(-1)
     
+      // Selects a new positoon that the snake will take based upon the avalible options in the array
       const selectedPosition = Math.floor(Math.random() * nextMovementArray.length)
 
       removeCharacter(currentIndex, snakes[index].className + 'snake')
@@ -358,10 +359,10 @@ function init() {
   // Main Menu  ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
   newGame()
   
-  function mainMenu()
-  const buttons = document.createElement('div')
+  // function mainMenu()
+  // const buttons = document.getElementById('div')
 
 
 }
-mainMenu()
+// mainMenu()
 window.addEventListener('DOMContentLoaded', init)
