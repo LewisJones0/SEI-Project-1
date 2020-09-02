@@ -1,24 +1,20 @@
 
 function init() {
   // Dom Elements
-  // 
-  // const scoreMenu = document.querySelector('.scoreMenu')
-  // const soundOffButton = document.querySelector('.soundOff')
+  const scoreMenu = document.querySelector('.scoreMenu')
+  scoreMenu.style.display = 'none'
+  const winContainer = document.querySelector('.winContainer')
+  winContainer.style.visibility = 'hidden'
+  const loseContainer = document.querySelector('.loseContainer')
+  loseContainer.style.visibility = 'hidden'
 
-  // const newGameButtonAccess = document.getElementByID('#newGame')
-  // newGameButtonAccess.addEventListener('click', newGame())
-
-
-
-
-  document.querySelector('#newGame').onclick = function newGame() {
-
-    //Remove main menu after newGame has started
-    console.log('working')
+  document.querySelector('#newGameMainMenu').onclick = function newGame() {
+    //Removes MainMenu Div
     const mainMenu = document.querySelector('.mainMenu')
     mainMenu.style.display = 'none'
-
-    // removeMainMenu.parentNode.removeChild
+    //Places the Score Menu Div on the top
+    const scoreMenu = document.querySelector('.scoreMenu')
+    scoreMenu.style.display = 'flex'
 
     // Grid Variables
     const grid = document.querySelector('.grid')
@@ -312,7 +308,7 @@ function init() {
       if (!cells[currentIndex + 10].classList.contains('wallTile') && !cells[currentIndex + 10].classList.contains('stairs_east') && !cells[currentIndex + 10].classList.contains('snake')) nextMovementArray.push(10)
       if (!cells[currentIndex - 1].classList.contains('wallTile') && !cells[currentIndex - 1].classList.contains('stairs_east') && !cells[currentIndex - 1].classList.contains('snake')) nextMovementArray.push(-1)
     
-      // Selects a new positoon that the snake will take based upon the avalible options in the array
+      // Selects a new position that the snake will take based upon the avalible options in the array
       const selectedPosition = Math.floor(Math.random() * nextMovementArray.length)
 
       removeCharacter(currentIndex, snakes[index].className + 'snake')
@@ -323,9 +319,6 @@ function init() {
 
       checkLose() // Checks for lose every step a snake makes (snake steps on human)
     }
-
-
-
 
 
     function strengthConsumption() {
@@ -345,38 +338,52 @@ function init() {
       }
     }
 
+
+
+    // ------- WIN AND LOSE CONDITIONS && WIN AND LOSE DOM ALTERATIONS
+
     // Checks everytime the player takes a step whether all of the strength has been cleared across the board
     function checkWin() {
       let count = 0
-    
       cells.forEach(cell => {
         if (cell.classList.contains('strengthTile')) count++
       })
-      if (count === 0) alert('WIN')
-      removeMap()
+      if (count === 0) displayWin()
     }
 
     // Checks everytime the player takes a step on one of the snakes or visa versa
     function checkLose() { 
       let count = 0
-
       cells.forEach(cell => {
         if (cell.classList.contains('snake') && cell.classList.contains('humanSprite')) count++
       })
-      // if (count === 1) alert('LOSE')
-      removeMap()
-    }
-
-    function removeMap() {
-    //Remove main menu after newGame has started
-      console.log('working')
-      const mainMenu = document.querySelector('.mainMenu')
-      mainMenu.style.display = 'none'
+      if (count === 1) displayLose()
     }
 
 
+    // Lose Dom Function
+    function displayLose() {
+      loseContainer.style.visibility = 'none'
+      console.log('lose')
+    }
+    // Win Dom Function
+    function displayWin() {
+      winContainer.style.visibility = 'none'
+      console.log('win')
+    }
+
+
+    //Reset Game Function using the second New Game Button
+    document.querySelector('#newGameScoreMenu').onclick = function newGameScoreMenu() {
+      document.querySelector('.grid').innerHTML = ''
+      newGame()
+    }
+
+    
+    
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
+    document.querySelector('#newGameMainMenu').onclick
   }
 }
 

@@ -10,7 +10,7 @@ body {
 
 .mainMenu {
   position: fixed;
-  top: 15%;
+  top: 10%;
   left: 0;
   right: 0;
   margin-right: auto;
@@ -19,7 +19,7 @@ body {
   width: 1250px;
   border:gray solid 20px;
   background-color: darkred;
-  z-index: 999;
+  z-index: 998;
 }
 
 .mainMenuButtons {
@@ -30,7 +30,14 @@ body {
   height: 10%;
 }
 
-#newGame {
+#newGameScoreMenu {
+  background-color: lightgray;
+  width: 15%;
+  border: darkslategray solid 2px;
+  font-size: 25px;
+}
+
+#newGameMainMenu {
   background-color: lightgray;
   width: 35%;
   border: darkslategray solid 2px;
@@ -65,9 +72,40 @@ h1 {
   margin-left: 75px;
 }
 
+.loseContainer  {
+  display: block;
+  position: fixed;
+  box-sizing: border-box;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  height: 1100px;
+  width: 1250px;
+  border:gray solid 20px;
+  background-color: darkred;
+  z-index: 999;
+}
+
+.winContainer  {
+  display: block;
+  position: fixed;
+  box-sizing: border-box;
+  top: 15%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  height: 1100px;
+  width: 1250px;
+  border:gray solid 20px;
+  background-color: darkred;
+  z-index: 999;
+}
 
 .grid-wrapper {
-  height: 100vh;
+  height: 92.5vh;
   display: flex;
   justify-content: center;
   align-items: center;
