@@ -1,15 +1,41 @@
 
 function init() {
   // Dom Elements
+  //Display 'none' is for the divs we want to hide before cetain criteria is met.
   const scoreMenu = document.querySelector('.scoreMenu')
-  const winContainer = document.querySelector('.winContainer')
-  const loseContainer = document.querySelector('.loseContainer')
-
   scoreMenu.style.display = 'none'
+
+  const winContainer = document.querySelector('.winContainer')
   winContainer.style.display = 'none'
+
+  const loseContainer = document.querySelector('.loseContainer')
   loseContainer.style.display = 'none'
 
-  //--------------
+  //Music
+  const source = '../assets/sounds/doomsound.mp4'
+  var audio = document.createElement('audio')
+  audio.autoplay = true
+  audio.load()
+  audio.addEventListener('load', function() { 
+    audio.play()
+  }, true)
+  audio.src = source
+  //Audio Controls
+  // const audioMute1 = document.querySelector('.soundOff1')
+  // const audioMute2 = document.querySelector('.soundOff2')
+  //play sound
+  // function reenableSound(){ 
+  //   audio.play()  
+  // }
+  // document.querySelector('.soundOff1').onclick = function disableSound() {
+  //   audio.pause()
+  // }
+  // document.querySelector('.soundOff2').onclick = function disableSound() {
+  //   audio.pause()
+  // }
+
+
+  //-----------------------------------------------
 
   // Click on NewGame Button, starts newgame, removes Main Menu
   document.querySelector('#newGameMainMenu').onclick = function newGame() {
@@ -372,35 +398,19 @@ function init() {
     function displayLose() {
       const loseContainer = document.querySelector('.loseContainer')
       loseContainer.style.display = 'flex'
-
-
-      // let loseContainer = document.querySelector('.loseContainer')
-      // const loseContainer = document.getElementsByClassName('.loseContainer').display = 'flex'
-      console.log(loseContainer)
-      console.log('lose')
-
-      // loseContainer = document.styleSheets[0].cssRules[0].style
-      // loseContainer.removeAttribute('display')
-
-      
     }
+
     // Win Dom Function
     function displayWin() {
       const winContainer = document.querySelector('.winContainer')
       winContainer.style.display = 'flex'
-      // let winContainer = document.querySelector('.winContainer')
-      // const winContainer = document.getElementsByClassName('.winContainer').style.display = 'flex'
-      console.log(winContainer)
-      console.log('win')
-
-
-      // winContainer = document.styleSheets[0].cssRules[0].style
-      // winContainer.removeProperty('display:')
     }
 
     //Reset Game Function using the second New Game Button
     document.querySelector('#newGameScoreMenu').onclick = function newGameScoreMenu() {
       document.querySelector('.grid').innerHTML = ''
+      winContainer.style.display = 'none'
+      loseContainer.style.display = 'none'
       newGame()
     }
 
@@ -409,6 +419,8 @@ function init() {
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
     document.querySelector('#newGameMainMenu').onclick
+    // document.querySelector('#soundOff1').onclick
+    // document.querySelector('#soundOff2').onclick
   }
 }
 

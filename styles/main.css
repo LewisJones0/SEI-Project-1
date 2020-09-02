@@ -48,7 +48,14 @@ body {
   font-size: 25px;
 }
 
-#soundOff {
+#soundOff1 {
+  background-color: lightgray;
+  width: 15%;
+  border: gray solid 2px;
+  font-size: 25px;
+}
+
+#soundOff2 {
   background-color: lightgray;
   width: 15%;
   border: gray solid 2px;
@@ -77,8 +84,6 @@ h1 {
   margin-left: 75px;
 }
 
-
-
 .loseContainer  {
   display: flex;
   position: fixed;
@@ -92,7 +97,7 @@ h1 {
   width: 1250px;
   border:gray solid 20px;
   background-color: darkred;
-  /* z-index: 999; */
+  z-index: 999;
 }
 
 .loseContainer.flex {
@@ -112,7 +117,6 @@ h1 {
   width: 1250px;
   border:gray solid 20px;
   background-color: darkred;
-  /* z-index: 999; */
 }
 
 .grid-wrapper {
