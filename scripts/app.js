@@ -2,12 +2,16 @@
 function init() {
   // Dom Elements
   const scoreMenu = document.querySelector('.scoreMenu')
-  scoreMenu.style.display = 'none'
   const winContainer = document.querySelector('.winContainer')
-  winContainer.style.visibility = 'hidden'
   const loseContainer = document.querySelector('.loseContainer')
-  loseContainer.style.visibility = 'hidden'
 
+  scoreMenu.style.display = 'none'
+  winContainer.style.display = 'none'
+  loseContainer.style.display = 'none'
+
+  //--------------
+
+  // Click on NewGame Button, starts newgame, removes Main Menu
   document.querySelector('#newGameMainMenu').onclick = function newGame() {
     //Removes MainMenu Div
     const mainMenu = document.querySelector('.mainMenu')
@@ -317,6 +321,8 @@ function init() {
 
       snakes[index].currentIndex = currentIndex + nextMovementArray[selectedPosition]
 
+      
+
       checkLose() // Checks for lose every step a snake makes (snake steps on human)
     }
 
@@ -355,7 +361,8 @@ function init() {
     function checkLose() { 
       let count = 0
       cells.forEach(cell => {
-        if (cell.classList.contains('snake') && cell.classList.contains('humanSprite')) count++
+        if (cell.classList.contains('greensnake') && cell.classList.contains('humanSprite')) count++
+        if (cell.classList.contains('redsnake') && cell.classList.contains('humanSprite')) count++
       })
       if (count === 1) displayLose()
     }
@@ -363,15 +370,33 @@ function init() {
 
     // Lose Dom Function
     function displayLose() {
-      loseContainer.style.visibility = 'none'
+      const loseContainer = document.querySelector('.loseContainer')
+      loseContainer.style.display = 'flex'
+
+
+      // let loseContainer = document.querySelector('.loseContainer')
+      // const loseContainer = document.getElementsByClassName('.loseContainer').display = 'flex'
+      console.log(loseContainer)
       console.log('lose')
+
+      // loseContainer = document.styleSheets[0].cssRules[0].style
+      // loseContainer.removeAttribute('display')
+
+      
     }
     // Win Dom Function
     function displayWin() {
-      winContainer.style.visibility = 'none'
+      const winContainer = document.querySelector('.winContainer')
+      winContainer.style.display = 'flex'
+      // let winContainer = document.querySelector('.winContainer')
+      // const winContainer = document.getElementsByClassName('.winContainer').style.display = 'flex'
+      console.log(winContainer)
       console.log('win')
-    }
 
+
+      // winContainer = document.styleSheets[0].cssRules[0].style
+      // winContainer.removeProperty('display:')
+    }
 
     //Reset Game Function using the second New Game Button
     document.querySelector('#newGameScoreMenu').onclick = function newGameScoreMenu() {
@@ -390,4 +415,3 @@ function init() {
 
 // mainMenu()
 window.addEventListener('DOMContentLoaded', init)
-
