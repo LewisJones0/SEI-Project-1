@@ -30,32 +30,40 @@ body {
   height: 10%;
 }
 
-#skipIntro {
-  background-color: lightgray;
-  width: 10%;
-  border: darkslategray solid 2px;
-  font-size: 25px;
-}
 #newGame {
   background-color: lightgray;
   width: 35%;
   border: darkslategray solid 2px;
   font-size: 25px;
 }
+
 #soundOff {
   background-color: lightgray;
-  width: 10%;
+  width: 15%;
   border: gray solid 2px;
   font-size: 25px;
 }
 
-.ScoreMenu {
+.scoreMenu {
   display: flex;
   justify-content: center;
   font-size: 25px;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 150px;
+  color: white;
+  margin-bottom: auto;
+}
 
+.instructions {
+  width: 50%;
+  font-size: 22px;
+  color: aliceblue;
+  margin-left: 75px;
+}
 
 
 .grid-wrapper {
@@ -66,12 +74,11 @@ body {
 }
 
 .snakeman {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  height: 750px;
-  margin-right: auto;
-  margin-left: auto;
+    position: absolute;
+    top: 62%;
+    left: 50.1%;
+    height: auto;
+    width: 50%;
   }
 
 .grid {

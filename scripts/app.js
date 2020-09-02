@@ -1,32 +1,46 @@
 
 function init() {
   // Dom Elements
-  const mainMenu = document.querySelector('.mainMenu')
-  const grid = document.querySelector('.grid')
-  const cells = []
-  
-  // Grid Variables
-  const width = 10
-  const cellCount = width * width
+  // 
+  // const scoreMenu = document.querySelector('.scoreMenu')
+  // const soundOffButton = document.querySelector('.soundOff')
 
-  // Player starting positon
-  const humanStartPosition = 11
+  // const newGameButtonAccess = document.getElementByID('#newGame')
+  // newGameButtonAccess.addEventListener('click', newGame())
 
-  // Scoreboard
-  const scoreDisplay = document.getElementById('score')
-  let score = 0
 
-  //Teleporter Variables
-  let teleporterDirection 
-  const teleporterLocationArray = []
-  let teleporterLocation
 
-  //------------------------------------------------------------------------------------------------------
-  function newGame() {
 
+  document.querySelector('#newGame').onclick = function newGame() {
+
+    //Remove main menu after newGame has started
+    console.log('working')
+    const mainMenu = document.querySelector('.mainMenu')
+    mainMenu.style.display = 'none'
+
+    // removeMainMenu.parentNode.removeChild
+
+    // Grid Variables
+    const grid = document.querySelector('.grid')
+    const cells = []
+    const width = 10
+    const cellCount = width * width
+
+    // Scoreboard
+    const scoreDisplay = document.getElementById('score')
+    let score = 0
+
+    // Player starting positon
+    const humanStartPosition = 11
     let humanPosition = humanStartPosition
     scoreDisplay.innerHTML = 0
     
+    //Teleporter Variables
+    let teleporterDirection 
+    const teleporterLocationArray = []
+    let teleporterLocation
+
+
     // Map Layout
 
     // 0 = Wall
@@ -339,6 +353,7 @@ function init() {
         if (cell.classList.contains('strengthTile')) count++
       })
       if (count === 0) alert('WIN')
+      removeMap()
     }
 
     // Checks everytime the player takes a step on one of the snakes or visa versa
@@ -349,20 +364,23 @@ function init() {
         if (cell.classList.contains('snake') && cell.classList.contains('humanSprite')) count++
       })
       // if (count === 1) alert('LOSE')
+      removeMap()
+    }
+
+    function removeMap() {
+    //Remove main menu after newGame has started
+      console.log('working')
+      const mainMenu = document.querySelector('.mainMenu')
+      mainMenu.style.display = 'none'
     }
 
 
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
   }
-
-  // Main Menu  ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------ ------
-  newGame()
-  
-  // function mainMenu()
-  // const buttons = document.getElementById('div')
-
-
 }
+
+
 // mainMenu()
 window.addEventListener('DOMContentLoaded', init)
+
