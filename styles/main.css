@@ -5,22 +5,21 @@
 }
 
 body {
-  font-family: 'Carrois Gothic';
-  height: 100vh;
+  font-family: 'Grenze+Gotisch';
+  height: 80vh;
   margin: 0;
   background-color: dimgray;
-  font-family: 'Grenze Gotisch';
 }
 
 .mainMenu {
   position: fixed;
-  top: 10%;
+  top: 8.6%;
   left: 0;
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 1100px;
-  width: 1250px;
+  height: 700px;
+  width: 800px;
   border:gray solid 20px;
   background-color: darkred;
   z-index: 998;
@@ -30,7 +29,7 @@ body {
   display: flex;
   justify-items: center;
   justify-content: space-around;
-  margin-top: 2.5%;
+  /* margin-top: 2.5%; */
   height: 10%;
 }
 
@@ -38,86 +37,134 @@ body {
   background-color: lightgray;
   width: 15%;
   border: darkslategray solid 2px;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #newGameMainMenu {
   background-color: lightgray;
   width: 35%;
   border: darkslategray solid 2px;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #soundOff1 {
   background-color: lightgray;
   width: 15%;
   border: gray solid 2px;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 #soundOff2 {
   background-color: lightgray;
   width: 15%;
   border: gray solid 2px;
-  font-size: 25px;
+  font-size: 15px;
 }
 
 .scoreMenu {
   display: flex;
   justify-content: center;
-  font-size: 25px;
+  font-size: 15px;
+  /* margin-left: auto; */
 }
 
+/*  */
 h1 {
   display: flex;
   justify-content: center;
-  font-size: 250px;
+  font-size: 150px;
   color: white;
   margin-bottom: auto;
   margin-top: auto;
 }
 
-.instructions {
-  width: 50%;
-  font-size: 22px;
+p {
+  font-size: 25px;
   color: aliceblue;
-  margin-left: 75px;
+  margin-left: 70px;
 }
+
+
+.instructions {
+  /* width: 45%; */
+  font-size: 15px;
+  color: aliceblue;
+  margin-left: 70px;
+}
+
+h2 {
+  display: flex;
+  margin-right: 50px;
+  align-self: center;
+}
+
+h5 {
+  width: 45%;
+  margin-top: 5%;
+}
+
+ul {
+  width: 45%;
+}
+
+/*  */
 
 .loseContainer  {
   display: flex;
   position: fixed;
   box-sizing: border-box;
-  top: 15%;
+  top: 17.1%;
   left: 0;
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 1100px;
-  width: 1250px;
+  height: 700px;
+  width: 800px;
   border:gray solid 20px;
   background-color: darkred;
   z-index: 999;
-}
-
-.loseContainer.flex {
-  display: flex;
 }
 
 .winContainer  {
   display: flex;
   position: fixed;
   box-sizing: border-box;
-  top: 15%;
+  top: 17.1%;
   left: 0;
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 1100px;
-  width: 1250px;
+  height: 700px;
+  width: 800px;
   border:gray solid 20px;
   background-color: darkred;
 }
+
+h4 {
+  font-size: 45px;
+  color: white;
+  margin-left: 5%;
+  /* margin-top: 0; */
+}
+
+h5 {
+  font-size: 20px;
+  color: white;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 7.5%;
+}
+
+.defeatCobra {
+  position: absolute;
+  top: 45%;
+  left: 45%;
+  height: auto;
+  width: 50%;
+}
+
+
+/*  */
 
 .grid-wrapper {
   height: 92.5vh;
@@ -141,9 +188,9 @@ h1 {
   flex-wrap: wrap;
   height: 100%;
   justify-content: center;
-  height: 1000px;
-  width: 1000px;
-  background-color: black;
+  height: 700px;
+  width: 700px;
+  background-image: url('../assets/sprites/brownstone.jpg');
   color: white;
 }
 

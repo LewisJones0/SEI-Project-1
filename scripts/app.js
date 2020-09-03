@@ -11,8 +11,8 @@ function init() {
   const loseContainer = document.querySelector('.loseContainer')
   loseContainer.style.display = 'none'
 
-  //Music
-  const source = '../assets/sounds/doomsound.mp4'
+  // Music
+  const source = '../assets/sounds/d1_dungeonmusic.mp3'
   var audio = document.createElement('audio')
   audio.autoplay = true
   audio.load()
@@ -20,7 +20,7 @@ function init() {
     audio.play()
   }, true)
   audio.src = source
-  //Audio Controls
+  // Audio Controls
   // const audioMute1 = document.querySelector('.soundOff1')
   // const audioMute2 = document.querySelector('.soundOff2')
   //play sound
@@ -419,7 +419,7 @@ function init() {
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
     document.querySelector('#newGameMainMenu').onclick
-    // document.querySelector('#soundOff1').onclick
+    // document.querySelector('#soundOff1').onclick 
     // document.querySelector('#soundOff2').onclick
   }
 }
