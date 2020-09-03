@@ -14,6 +14,7 @@ function init() {
   const swordBox = document.querySelector('.sword-box')
   swordBox.style.display = 'none'
 
+
   // -------------------------------------------
 
   // Music
@@ -338,7 +339,7 @@ function init() {
       const nextMovementArray = []
       const currentIndex = snakes[index].currentIndex
 
-      //Snake on Snake IF statement isnt working, this might be due to how the interger is calculating with eachother 
+      //Snake on Snake IF statement isnt working, this might be due to how the interger is calculating with eachother     **Snake&SnakeOne doesn't work**
       if (!cells[currentIndex - 10].classList.contains('wallTile') && !cells[currentIndex - 10].classList.contains('stairs_east') && !cells[currentIndex - 10].classList.contains('snake')) nextMovementArray.push(-10)
       if (!cells[currentIndex + 1].classList.contains('wallTile') && !cells[currentIndex + 1].classList.contains('stairs_east') && !cells[currentIndex + 1].classList.contains('snake')) nextMovementArray.push(1)
       if (!cells[currentIndex + 10].classList.contains('wallTile') && !cells[currentIndex + 10].classList.contains('stairs_east') && !cells[currentIndex + 10].classList.contains('snake')) nextMovementArray.push(10)
@@ -353,6 +354,7 @@ function init() {
 
       snakes[index].currentIndex = currentIndex + nextMovementArray[selectedPosition]
 
+      // checkTwoSnakes()
       checkLose() // Checks for lose every step a snake makes (snake steps on human)
     }
 
@@ -374,6 +376,9 @@ function init() {
       }
     }
 
+    // function checkTwoSnakes() {
+    //   if (cells.classList.contains('greensnake') && (cells.classList.contains('redsnake'))) cells.classList.add('twoSnakes')
+    // }
 
 
     // ------- WIN AND LOSE CONDITIONS && WIN AND LOSE DOM ALTERATIONS
@@ -415,11 +420,11 @@ function init() {
       document.querySelector('.grid').innerHTML = ''
       winContainer.style.display = 'none'
       loseContainer.style.display = 'none'
+      swordBox.style.display = 'none'
       newGame()
+      
     }
 
-    
-    
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
   }

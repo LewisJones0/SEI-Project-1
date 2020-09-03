@@ -100,7 +100,6 @@ h1 {
 }
 
 .instructions {
-  /* width: 45%; */
   font-size: 15px;
   color: aliceblue;
   margin-left: 70px;
@@ -151,7 +150,7 @@ li {
   width: 800px;
   border:gray solid 20px;
   background-color: darkred;
-  z-index: 999;
+  z-index: 998;
 }
 
 .winContainer  {
@@ -218,7 +217,7 @@ h5 {
 }
 
 .grid div {
-  border: 1px solid darkgray;
+  border: 1px solid rgb(105,105,105);
   flex-grow: 1;
   height: 10%;
   width: 10%;
@@ -325,12 +324,26 @@ h5 {
   animation-direction: alternate;
 }
 
+.grid div.twoSnakes {
+  background-image: url('/assets/sprites/snake12.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  z-index: 995;
+}
+
 .sword-box {
   width: 25%;
   height: 25%;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0);
   margin: 0 auto;
-  margin-left: 60%;
+  margin-left: 25%;
   margin-bottom: 5%;
   margin-top: 50%;
   overflow: hidden;
@@ -347,8 +360,12 @@ h5 {
     opacity: 0.5;
   }
 
+  65% {
+    opacity: 0;
+  }
+
   100% {
-    opacity: 0%;
+    opacity: 1;
   }
 }
 
@@ -356,11 +373,9 @@ h5 {
   font-size: 25px;
   position: absolute;
   top: 0;
-  opacity: 0;
   color: white;
   animation-name: fadeInOut;
-  animation-delay: 1s;
-  animation-duration: 5s;
+  animation-duration: 4s;
   z-index: 999;
   opacity: 1;
 }
