@@ -11,31 +11,38 @@ function init() {
   const loseContainer = document.querySelector('.loseContainer')
   loseContainer.style.display = 'none'
 
+  const swordBox = document.querySelector('.sword-box')
+  swordBox.style.display = 'none'
+
+  // -------------------------------------------
+
   // Music
   const source = '../assets/sounds/d1_dungeonmusic.mp3'
-  var audio = document.createElement('audio')
+  const audio = document.createElement('audio')
   audio.autoplay = true
   audio.load()
   audio.addEventListener('load', function() { 
     audio.play()
   }, true)
   audio.src = source
-  // Audio Controls
-  // const audioMute1 = document.querySelector('.soundOff1')
-  // const audioMute2 = document.querySelector('.soundOff2')
-  //play sound
-  // function reenableSound(){ 
-  //   audio.play()  
-  // }
-  // document.querySelector('.soundOff1').onclick = function disableSound() {
-  //   audio.pause()
-  // }
-  // document.querySelector('.soundOff2').onclick = function disableSound() {
-  //   audio.pause()
-  // }
+
+  // Audio Controls (Button 1 and 2)
+
+  document.querySelector('#soundOff1').onclick = function toggleSound() {
+    if (audio.paused)
+      audio.play()
+    else
+      audio.pause()
+  }
+  document.querySelector('#soundOff2').onclick = function toggleSound() {
+    if (audio.paused)
+      audio.play()
+    else
+      audio.pause()
+  }
 
 
-  //-----------------------------------------------
+  //-------------------NEW GAME----------------------------
 
   // Click on NewGame Button, starts newgame, removes Main Menu
   document.querySelector('#newGameMainMenu').onclick = function newGame() {
@@ -76,14 +83,14 @@ function init() {
     // 4 = Stairs/Teleporter
     const mapLayout  = [
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
       0, 1, 1, 1, 1, 1, 1, 1, 3, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 1, 0,
       0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     // RNG wallTile blocks inside the grid
@@ -144,7 +151,6 @@ function init() {
           cells[i].classList.add('wallTile')
         } else if (mapLayout[i] === 1) {
           cells[i].classList.add('strengthTile')
-          cells[i].classList.add('circle')
         } else if (mapLayout[i] === 2) {
           cells[i].classList.add('emptyTile')
         } else if (mapLayout[i] === 3) {
@@ -347,8 +353,6 @@ function init() {
 
       snakes[index].currentIndex = currentIndex + nextMovementArray[selectedPosition]
 
-      
-
       checkLose() // Checks for lose every step a snake makes (snake steps on human)
     }
 
@@ -358,16 +362,15 @@ function init() {
         score += 10
         scoreDisplay.innerHTML = score
         cells[humanPosition].classList.remove('strengthTile')
-        cells[humanPosition].classList.remove('circle')
       }
     }
 
     function swordConsumption() {
       if (cells[humanPosition].classList.contains('swordTile')) {
-        score += 100
+        score -= 100
         scoreDisplay.innerHTML = score
         cells[humanPosition].classList.remove('swordTile')
-        //NEED TO ADD IN FEARING MECHANIC AFTER BOTS IS COMPLETED
+        swordBox.style.display = 'flex'
       }
     }
 
@@ -395,13 +398,13 @@ function init() {
     }
 
 
-    // Lose Dom Function
+    // Lose Dom Function - Pulls the Div to the front
     function displayLose() {
       const loseContainer = document.querySelector('.loseContainer')
       loseContainer.style.display = 'flex'
     }
 
-    // Win Dom Function
+    // Win Dom Function - Pulls the Div to the front
     function displayWin() {
       const winContainer = document.querySelector('.winContainer')
       winContainer.style.display = 'flex'
@@ -419,12 +422,11 @@ function init() {
     
     // ----- Event listeners ------
     document.addEventListener('keyup', handleKeyUp)
-    document.querySelector('#newGameMainMenu').onclick
-    // document.querySelector('#soundOff1').onclick 
-    // document.querySelector('#soundOff2').onclick
   }
 }
 
 
 // mainMenu()
 window.addEventListener('DOMContentLoaded', init)
+
+
