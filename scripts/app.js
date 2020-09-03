@@ -399,7 +399,8 @@ function init() {
         if (cell.classList.contains('greensnake') && cell.classList.contains('humanSprite')) count++
         if (cell.classList.contains('redsnake') && cell.classList.contains('humanSprite')) count++
       })
-      if (count === 1) displayLose()
+      if (count === 1) displayLose(), swordBox.style.display = 'none'
+      
     }
 
 
@@ -435,3 +436,9 @@ function init() {
 window.addEventListener('DOMContentLoaded', init)
 
 
+
+//Bugs
+//Continues playing after win/lose condition
+//Pause/Unpause Function
+//2 Snake Tile Fix
+//If move into sword while lose div is up, the text shows (as game is playing)

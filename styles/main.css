@@ -356,12 +356,24 @@ h5 {
     opacity: 1;
   }
 
-  45% {
-    opacity: 0.5;
+  20% {
+    opacity: 0.8;
   }
 
-  65% {
+  40% {
+    opacity: 0.4;
+  }
+
+  50% {
     opacity: 0;
+  }
+
+  60% {
+    opacity: 0.4;
+  }
+
+  80% {
+    opacity: 0.8;
   }
 
   100% {
@@ -375,7 +387,7 @@ h5 {
   top: 0;
   color: white;
   animation-name: fadeInOut;
-  animation-duration: 4s;
+  animation-duration: 6s;
   z-index: 999;
   opacity: 1;
 }
