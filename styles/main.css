@@ -18,7 +18,7 @@ body {
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 700px;
+  height: 800px;
   width: 800px;
   border:gray solid 20px;
   background-color: darkred;
@@ -31,6 +31,14 @@ body {
   justify-content: space-around;
   /* margin-top: 2.5%; */
   height: 10%;
+}
+
+.snakeman {
+  position: absolute;
+  top: 66.7%;
+  left: 50%;
+  height: auto;
+  width: 50%;
 }
 
 #newGameScoreMenu {
@@ -96,6 +104,11 @@ h2 {
   display: flex;
   margin-right: 50px;
   align-self: center;
+  margin-bottom: 10%;
+}
+
+h3 {
+  margin-top: 5%;
 }
 
 h5 {
@@ -118,11 +131,11 @@ ul {
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 700px;
+  height: 800px;
   width: 800px;
   border:gray solid 20px;
   background-color: darkred;
-  z-index: 999;
+  z-index: 500;
 }
 
 .winContainer  {
@@ -134,10 +147,11 @@ ul {
   right: 0;
   margin-right: auto;
   margin-left: auto;
-  height: 700px;
+  height: 800px;
   width: 800px;
   border:gray solid 20px;
   background-color: darkred;
+  z-index: 999;
 }
 
 h4 {
@@ -157,8 +171,8 @@ h5 {
 
 .defeatCobra {
   position: absolute;
-  top: 45%;
-  left: 45%;
+  top: 50%;
+  left: 25%;
   height: auto;
   width: 50%;
 }
@@ -172,14 +186,6 @@ h5 {
   justify-content: center;
   align-items: center;
 }
-
-.snakeman {
-    position: absolute;
-    top: 62%;
-    left: 50.1%;
-    height: auto;
-    width: 50%;
-  }
 
 .grid {
   align-items: center;
@@ -201,25 +207,54 @@ h5 {
   width: 10%;
 }
 
+.grid div.wallTile { 
+  background-image: url('/assets/sprites/wall1.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation-name: flicker1;
+  animation-duration:0.1ms;
+  animation-delay:1ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.grid div.strengthTile { 
+  background-image: url('../assets/sprites/brownstone.jpg') radial-gradient(rgb(255, 115, 0), rgb(255, 255, 0));
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.grid div.emptyTile { 
+  background-image: url('../assets/sprites/brownstone.jpg');
+}
+
 .grid div.humanSprite {
   background-image: url('../assets/sprites/Neutral.png'), radial-gradient(rgb(255, 115, 0), rgb(255, 255, 0));
   background-repeat: no-repeat;
   background-size: contain;
 }
 
-.grid div.wallTile { 
-  background-image: url('/assets/sprites/wall1.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
+
+@keyframes flicker{
+  0%   {transform: rotate(-1deg);}
+  20%  {transform: rotate(1deg);}
+  40%  {transform: rotate(-1deg);}
+  60%  {transform: rotate(1deg) scaleY(1.04);}
+  80%  {transform: rotate(-2deg) scaleY(0.92);}
+  100% {transform: rotate(1deg);}
 }
 
-.grid div.strengthTile { 
-  background-color: yellow;
+@keyframes flicker1{
+  0%   {transform: rotate(-0.01deg);}
+  /* 20%  {transform: rotate(0.01deg);}
+  40%  {transform: rotate(-0.01deg);} */
+  60%  {transform: rotate(0.01deg) scaleY(1.04);}
+  80%  {transform: rotate(-0.5deg) scaleY(0.92);}
+  100% {transform: rotate(0.05deg);}
 }
 
-.grid div.emptyTile { 
-background-color: pink;
-}
+
 
 .grid div.swordTile { 
 background-color: red;
@@ -231,14 +266,40 @@ background-color: red;
   background-size: contain;
 }
 
+.grid div.strengthTile{
+  position:relative;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+
 .grid div.greensnake {
   background-image: url('/assets/sprites/GreenSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 .grid div.redsnake {
   background-image: url('/assets/sprites/RedSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
+  transform-origin:center bottom;
+  animation-name: flicker;
+  animation-duration:3ms;
+  animation-delay:200ms;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }

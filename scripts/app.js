@@ -136,7 +136,6 @@ function init() {
       //Create Grid
       for (let i = 0; i < cellCount; i++) {
         const cell = document.createElement('div')
-        cell.textContent = i
         grid.appendChild(cell)
         cells.push(cell)
 
@@ -145,6 +144,7 @@ function init() {
           cells[i].classList.add('wallTile')
         } else if (mapLayout[i] === 1) {
           cells[i].classList.add('strengthTile')
+          cells[i].classList.add('circle')
         } else if (mapLayout[i] === 2) {
           cells[i].classList.add('emptyTile')
         } else if (mapLayout[i] === 3) {
@@ -358,6 +358,7 @@ function init() {
         score += 10
         scoreDisplay.innerHTML = score
         cells[humanPosition].classList.remove('strengthTile')
+        cells[humanPosition].classList.remove('circle')
       }
     }
 
