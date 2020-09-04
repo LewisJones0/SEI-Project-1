@@ -18,7 +18,7 @@ function init() {
   // -------------------------------------------
 
   // Music
-  const source = '../assets/sounds/d1_dungeonmusic.mp3'
+  const source = './assets/sounds/d1_dungeonmusic.mp3'
   const audio = document.createElement('audio')
   audio.autoplay = true
   audio.load()
