@@ -410,12 +410,18 @@ h5 {
   opacity: 1;
 }
 
-@media only screen and (max-height: 960px) {
+@media only screen and (max-height: 900px) {
   p {
       margin-top: 0;
       font-size: 25px;
       left: 0;
   }
+  .grid {
+      margin-top: 5%;
+  }
+}
+
+@media only screen and (min-height: 901px) {
   .grid {
       margin-top: 5%;
   }
