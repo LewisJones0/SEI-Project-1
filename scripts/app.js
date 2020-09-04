@@ -438,7 +438,8 @@ window.addEventListener('DOMContentLoaded', init)
 
 
 //Bugs
-//Continues playing after win/lose condition
+//Continues to play after win/lose condition
 //Pause/Unpause Function
 //2 Snake Tile Fix
 //If move into sword while lose div is up, the text shows (as game is playing)
+//Fix stairs location
