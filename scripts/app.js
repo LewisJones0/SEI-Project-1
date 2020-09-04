@@ -443,3 +443,4 @@ window.addEventListener('DOMContentLoaded', init)
 //2 Snake Tile Fix
 //If move into sword while lose div is up, the text shows (as game is playing)
 //Fix stairs location
+//Mirage movement on large monitors

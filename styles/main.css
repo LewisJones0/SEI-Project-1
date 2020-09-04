@@ -30,15 +30,11 @@ body {
   border-top-color: white;
 }
 
-/* background: rgb(0,0,0);
-background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(54,50,50,1) 19%, rgba(106,97,97,1) 47%, rgba(177,164,164,1) 70%, rgba(255,255,255,1) 93%); */
-
 .mainMenuButtons {
   font-family: 'Grenze+Gotisch';
   display: flex;
   justify-items: center;
   justify-content: space-around;
-  /* margin-top: 2.5%; */
   height: 10%;
 }
 
@@ -54,17 +50,19 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(54,50,50,1) 19%, rgba(1
   font-family: 'Grenze+Gotisch';
   background-color: lightgray;
   width: 15%;
-  border: darkslategray solid 2px;
+  border: gray solid 2px;
   font-size: 30px;
   margin-right: 2.5%;
+  border-radius: 5px;
 }
 
 #newGameMainMenu {
   font-family: 'Grenze+Gotisch';
   background-color: lightgray;
   width: 35%;
-  border: darkslategray solid 2px;
+  border: gray solid 2px;
   font-size: 25px;
+  border-radius: 5px;
 }
 
 #soundOff1 {
@@ -72,7 +70,8 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(54,50,50,1) 19%, rgba(1
   width: 15%;
   font-family: 'Grenze+Gotisch';
   border: gray solid 2px;
-  font-size: 25px;
+  font-size: 27.5px;
+  border-radius: 5px;
 }
 
 #soundOff2 {
@@ -81,6 +80,7 @@ background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(54,50,50,1) 19%, rgba(1
   font-family: 'Grenze+Gotisch';
   border: gray solid 2px;
   font-size: 15px;
+  border-radius: 5px;
 }
 
 .scoreMenu {
@@ -288,7 +288,7 @@ h5 {
 }
 
 .grid div.humanSprite {
-  background-image: url('../assets/sprites/Neutral.png');
+  background-image: url('../assets/sprites/humanSprite.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -364,7 +364,7 @@ h5 {
   margin-left: 25%;
   margin-bottom: 5%;
   margin-top: 50%;
-  overflow: hidden;
+  overflow: auto;
   position: absolute;
   z-index: 998;
 }
