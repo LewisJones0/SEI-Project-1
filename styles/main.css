@@ -232,7 +232,6 @@ h5 {
   width: 700px;
   background-image: url('../assets/sprites/brownstone.jpg');
   color: white;
-  /* margin-top: 5%; */
 }
 
 .grid div {
@@ -411,11 +410,14 @@ h5 {
   opacity: 1;
 }
 
-@media only screen and (max-height: 870px) {
+@media only screen and (max-height: 960px) {
   p {
       margin-top: 0;
       font-size: 25px;
       left: 0;
+  }
+  .grid {
+      margin-top: 5%;
   }
 }
 
