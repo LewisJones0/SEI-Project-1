@@ -244,7 +244,7 @@ h5 {
 
 
 .grid div.wallTile { 
-  background-image: url('/assets/sprites/wall1.jpg');
+  background-image: url('../assets/sprites/wall1.jpg');
   background-repeat: no-repeat;
   background-size: contain;
   animation-name: flicker1;
@@ -256,7 +256,7 @@ h5 {
 }
 
 .grid div.strengthTile{
-  background-image: url('/assets/sprites/brownstonestr.jpg');
+  background-image: url('../assets/sprites/brownstonestr.jpg');
   position:relative;
   transform-origin:center bottom;
   animation-name: flicker;
@@ -270,7 +270,7 @@ h5 {
 }
 
 .grid div.swordTile{
-  background-image: url('/assets/sprites/brownstonesword.jpg');
+  background-image: url('../assets/sprites/brownstonesword.jpg');
   position:relative;
   transform-origin:center bottom;
   animation-name: flicker;
@@ -311,13 +311,13 @@ h5 {
 }
 
 .grid div.stairs_east { 
-  background-image: url('/assets/sprites/Stairs_East.png');
+  background-image: url('../assets/sprites/Stairs_East.png');
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .grid div.greensnake {
-  background-image: url('/assets/sprites/GreenSnake1.png');
+  background-image: url('../assets/sprites/GreenSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
   transform-origin:center bottom;
@@ -330,7 +330,7 @@ h5 {
 }
 
 .grid div.redsnake {
-  background-image: url('/assets/sprites/RedSnake1.png');
+  background-image: url('../assets/sprites/RedSnake1.png');
   background-repeat: no-repeat;
   background-size: contain;
   transform-origin:center bottom;
@@ -343,7 +343,7 @@ h5 {
 }
 
 .grid div.twoSnakes {
-  background-image: url('/assets/sprites/snake12.png');
+  background-image: url('../assets/sprites/snake12.png');
   background-repeat: no-repeat;
   background-size: contain;
   transform-origin:center bottom;
