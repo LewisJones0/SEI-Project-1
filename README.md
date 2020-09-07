@@ -8,3 +8,9 @@ This version of Pacman was inspired by Christian and Greek stories as well as Da
 The game is about a protagonist that is decending down the levels of a crypt. The game itself represents one level that the protangonist finds himself in. 
 
   ![Player](/assets/sprites/humanSprite.png)
+
+The story of the player descending down the crypt introduces interesting game mechanics that I was able to animate with CSS. 
+
+An example of this was as the story character was fighting monsters down each level, he had reduced sanity and strength, implementing a shaking animation on the tiles to simulate the 
+
+  ![TileVib](/assets/README-content/Tile_Vibration.mp4)
