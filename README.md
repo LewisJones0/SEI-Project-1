@@ -1,4 +1,4 @@
-# SEI Project One: Biblical
+# SEI Project One:
 ![BiblicalExample](/assets/README-content/BiblicalTitle.png)
 
 ## TLDR
