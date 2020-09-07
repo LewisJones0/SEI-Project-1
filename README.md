@@ -7,4 +7,4 @@ This version of Pacman was inspired by Christian and Greek stories as well as Da
 
 The game is about a protagonist that is decending down the levels of a crypt. The game itself represents one level that the protangonist finds himself in. 
 
-  ![Player](../assets/sprites/humanSprite.png)
+  ![Player](/assets/sprites/humanSprite.png)
