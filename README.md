@@ -13,4 +13,4 @@ The story of the player descending down the crypt introduces interesting game me
 
 An example of this was as the story character was fighting monsters down each level, he had reduced sanity and strength, implementing a shaking animation on the tiles to simulate the 
 
-  ![TileVib](/assets/README-content/Tile_Vibration.mp4)
+  ![TileVib](/assets/README-content/Tile_Vibration.gif)
