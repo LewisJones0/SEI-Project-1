@@ -35,7 +35,7 @@ The enemies of the player were demonic snakes - these snakes would one shot the 
 
 In order to win the game, the player must walk over all of the strength & sanity tiles on the map. 
 
-![StrTile](/assets/sprites/brownstonesword.jpg)
+![StrTile](/assets/sprites/brownstonestr.jpg)
 
 
 ____
