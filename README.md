@@ -1,17 +1,15 @@
 # SEI Project One: Biblical
 
 
-#### TLDR
+### TLDR
+- **Project Duration** - 8 Days
+- **Game Choice** - Pac Man
+- **Game Theme** - Biblical/Snakes/DungeonCrawler
+- **Technologies Used** - HTML, CSS & Vanilla JS (ES5 & ES6)
 
-- Project Duration
-8 Days
-- Game Choice
-Pac Man
-- Game Theme
-Biblical/Snakes/DungeonCrawler
-- Technologies Used
-HTML, CSS & Vanilla JS (ES5 & ES6)
+#### Game Example
 
+![TileVib](/assets/README-content/gameExample.gif)
 
 ## Abstract: Inital Thoughts and Project Overview
 
@@ -25,7 +23,7 @@ The game is about a protagonist that is decending down the levels of a crypt. Th
 
 The enemies of the player were demonic snakes - these snakes would one shot the player if they came into contact with him.
 
-  ![TileVib](/assets/README-content/greenSnake.gif) ![TileVib](/assets/README-content/brownSnake.gif)
+  ![GreenSnake](/assets/README-content/greenSnake.gif) ![BrownSnake](/assets/README-content/brownSnake.gif)
 
 
 
