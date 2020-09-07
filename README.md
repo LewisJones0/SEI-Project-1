@@ -9,7 +9,7 @@
 
 #### Game Example
 
-![GameExample](/assets/README-content/gameExample.gif)
+![BiblicalExample](/assets/README-content/BiblicalExample.gif)
 
 ## Abstract: Inital Thoughts and Project Overview
 
