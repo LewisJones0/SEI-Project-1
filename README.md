@@ -1,5 +1,5 @@
-# SEI Project One: Biblical
-
+# SEI Project One: 
+![BiblicalExample](/assets/README-content/BiblicalTitle.png)
 
 ## TLDR
 - **Project Duration** - 8 Days
@@ -43,7 +43,7 @@ In order to win the game, the player must walk over all of the strength & sanity
 
 ![StrTile](/assets/sprites/brownstonestr.jpg)
 
-
+![Victory](/assets/README-content/Victory.png)
 ____
 
 
