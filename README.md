@@ -9,6 +9,13 @@ The game is about a protagonist that is decending down the levels of a crypt. Th
 
   ![Player](/assets/sprites/humanSprite.png)
 
+The enemies of the player were demonic snakes - these snakes would one shot the player if they came into contact with him.
+
+  ![TileVib](/assets/README-content/greenSnake.gif) ![TileVib](/assets/README-content/brownSnake.gif
+
+
+
+
 The story of the player descending down the crypt introduces interesting game mechanics that I was able to animate with CSS. 
 
 An example of this was as the story character was fighting monsters down each level, he had reduced sanity and strength, implementing a shaking animation on the tiles to simulate the 
