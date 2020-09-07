@@ -11,7 +11,7 @@ The game is about a protagonist that is decending down the levels of a crypt. Th
 
 The enemies of the player were demonic snakes - these snakes would one shot the player if they came into contact with him.
 
-  ![TileVib](/assets/README-content/greenSnake.gif) ![TileVib](/assets/README-content/brownSnake.gif
+  ![TileVib](/assets/README-content/greenSnake.gif) ![TileVib](/assets/README-content/brownSnake.gif)
 
 
 
