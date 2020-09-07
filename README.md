@@ -1,5 +1,5 @@
 # SEI Project One: Biblical
-## Abstract: Inital Thoughts and Project Overview
+
 
 #### TLDR
 
@@ -11,6 +11,9 @@ Pac Man
 Biblical/Snakes/DungeonCrawler
 - Technologies Used
 HTML, CSS & Vanilla JS (ES5 & ES6)
+
+
+## Abstract: Inital Thoughts and Project Overview
 
 The first project I did at General Assembly was to develop a game from a selection of 90's classics. Initally I was planning on doing a version of Snake but after some concideration and push from my mentors, I decided to pivot and do an alternative version of Pacman. 
 
