@@ -9,7 +9,7 @@
 
 #### Game Example
 
-![TileVib](/assets/README-content/gameExample.gif)
+![GameExample](/assets/README-content/gameExample.gif)
 
 ## Abstract: Inital Thoughts and Project Overview
 
