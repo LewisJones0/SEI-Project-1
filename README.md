@@ -1,4 +1,4 @@
-# SEI Project One:
+# SEI Project One: 
 ![BiblicalExample](/assets/README-content/BiblicalTitle.png)
 
 ## TLDR
@@ -7,6 +7,7 @@
 - **Game Theme** - Biblical/Snakes/DungeonCrawler
 - **Technologies Used** - HTML, CSS & Vanilla JS (ES5 & ES6)
 - **Developer Tools** - VSCode, Eslint, Git, Github
+- **Teammates** - None, Solo Project
 ____
 
 ### Brief
