@@ -24,9 +24,8 @@ ____
 ## Game Example
 
 ![BiblicalExample](/assets/README-content/BiblicalExample.gif)
+____
 
-____
-____
 # Abstract: Inital Thoughts and Project Overview
 
 The first project I did at General Assembly was to develop a game from a selection of 90's classics. Initally I was planning on doing a version of Snake but after some consideration and push from my mentors, I decided to pivot and do an alternative version of Pac-Man. 
@@ -62,7 +61,6 @@ An example of this was as the story character was fighting monsters down each le
   ![TileVib](/assets/README-content/Tile_Vibration.gif)
 
 ____
-____
 
 # Successes, Challenges and Bugs
 
@@ -70,7 +68,7 @@ Overall I am very happy with how this project came out at the end given the 8 da
 ____
 
 ## Challenges
-____
+
 ### Learning about script complexity and organisation
 
 The biggest challenge I faced on a macro level was visualising the complexity of the JavaScript file as it gathered in complexity. As all of the functions were located in one file, the script was constantly jumping between many functions. This showcased to me that I had to spend more time in script organisation for my subsequent projects, and on top of that, start seperating certain functions inside more files.
@@ -89,13 +87,11 @@ Finished code below:
 
   ![CodeExample](/assets/README-content/CodeExample.png)
 ____
-____
 ### Bugs
 There was a few bugs I was unable to fix within the time limit of the project. The vast majority of the functionality was working other then a few minor points.
 
 - Game continued to run regardless of the win/loss condition (Visual overlay provides the illusion of game-end)
 - After the player plays the first game and starts a new game, the script just performs the loss function 
 - The game has a slight visualisation bug when the player picks up the illusionary sword - the grid shifts direction slightly
-____
 ____
 ____
