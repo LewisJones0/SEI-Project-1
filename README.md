@@ -56,7 +56,7 @@ ____
 
 The story of the player descending down the crypt introduces interesting game aesthetics that I was able to animate with CSS. 
 
-An example of this was as the story character was fighting monsters down each level, he had reduced sanity and strength. Implementing a shaking animation on the tiles to simulate the the experience of insanity brought more life to the game
+An example of this was as the story character was fighting monsters down each level, he had reduced sanity and strength. Implementing a shaking animation on the tiles to simulate the the experience of insanity brought more life to the game.
 
   ![TileVib](/assets/README-content/Tile_Vibration.gif)
 
