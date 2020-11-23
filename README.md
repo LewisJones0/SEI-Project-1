@@ -1,6 +1,8 @@
 # SEI Project One: 
 ![BiblicalExample](/assets/README-content/BiblicalTitle.png)
 
+Deployed Game: https://lewisjones0.github.io/SEI-Project-1/
+
 ## TLDR
 - **Project Duration** - 8 Days
 - **Game Choice** - Pac Man
