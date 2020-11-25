@@ -97,4 +97,11 @@ There was a few bugs I was unable to fix within the time limit of the project. T
 - After the player plays the first game and starts a new game, the script just performs the loss function 
 - The game has a slight visualisation bug when the player picks up the illusionary sword - the grid shifts direction slightly
 ____
+
+### Extra Features
+
+1. Fix the bugs described above
+2. Add additional difficulties (More snakes, smarter snake moves)
+3. Add new tile sets for each difficulties (Graphics)
+4. Add more numbers of tiles (say go from 10x10 to 20x20)
 ____
